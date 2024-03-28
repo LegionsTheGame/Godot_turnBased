@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Army/Army.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InfantryArmy/InfantryArmy.tscn" type="PackedScene" id=3]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,28 +15,20 @@ self_modulate = Color( 0.32549, 0.776471, 0.341176, 0.294118 )
 position = Vector2( 0, -250 )
 texture = ExtResource( 2 )
 
-[node name="Army1" parent="startNode1" instance=ExtResource( 3 )]
-position = Vector2( 142, 34 )
+[node name="IArmy1" parent="startNode1" instance=ExtResource( 3 )]
+position = Vector2( 246, 281 )
 
-[node name="Army2" parent="startNode1" instance=ExtResource( 3 )]
-position = Vector2( 4, 31 )
+[node name="IArmy2" parent="startNode1" instance=ExtResource( 3 )]
+position = Vector2( 16, 130 )
 
-[node name="Army3" parent="startNode1" instance=ExtResource( 3 )]
-position = Vector2( -133, 33 )
+[node name="IAmrny3" parent="startNode1" instance=ExtResource( 3 )]
+position = Vector2( -228, 304 )
 
 [node name="startNode2" type="Sprite" parent="."]
 self_modulate = Color( 0.32549, 0.776471, 0.341176, 0.294118 )
 position = Vector2( 0, 250 )
 texture = ExtResource( 2 )
 
-[node name="Army1" parent="startNode2" instance=ExtResource( 3 )]
-position = Vector2( -24, -185 )
-team_id = 1
-
-[node name="Army2" parent="startNode2" instance=ExtResource( 3 )]
-position = Vector2( -197, -192 )
-team_id = 1
-
-[node name="Army3" parent="startNode2" instance=ExtResource( 3 )]
-position = Vector2( 159, -204 )
+[node name="InfantryArmy" parent="startNode2" instance=ExtResource( 3 )]
+position = Vector2( 22, -215 )
 team_id = 1

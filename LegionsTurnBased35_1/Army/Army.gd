@@ -2,24 +2,16 @@ extends Area2D
 
 class_name Army
 
-export var team_id : int = 0
+export var team_id : int	= 0
 
-var destination : Vector2;
-var selected : bool = false;
-var team_color : Color;
+var selected : bool			= false;
+var enemyContactList 		= []
+var destination : Vector2;	
 
 func _ready():
-	if team_id != 0:
-		team_color = Color.brown
-	else:
-		team_color = Color.cyan
-		
-	destination 			= global_position
-	$army_sprite.self_modulate	= team_color
-	$range_sprite.visible		= false
-	$destination.visible		= false
-	
-	
+	if team_id != 0: $army_sprite.self_modulate = Color.brown; else: $army_sprite.self_modulate = Color.cyan		
+	destination 				= global_position
+	_select_and_update_ui(false)
 	pass
 
 	
@@ -27,7 +19,6 @@ func _process(delta):
 	var l = destination - global_position;
 	#Bevæger hæren : hvis detinationen er forskellig fra global position
 	if 	l.length() > 1:
-		$status_label.text = "active"
 		global_position = global_position + l.normalized()
 	#Grafik der markerer om den valgte destination er gyldig!!
 	if selected:
@@ -46,47 +37,53 @@ func _set_destination(new_destination):
 	var l = new_destination - global_position;
 	if l.length()<150:
 		destination = new_destination
-		$army_sprite.self_modulate	= team_color
-		$range_sprite.visible		= false
-		$destination.visible		= false
-		selected 					= false
+		_select_and_update_ui(false)
 		return true
 	pass
 
 		
 func _select(pos):
 	var l = pos - global_position;
-	if l.length() < 10:
-		$army_sprite.self_modulate	= Color.chocolate
-		$range_sprite.visible		= true
-		$destination.visible		= true
-		selected 					= true
+	if l.length() < 10:	
+		_select_and_update_ui(true); 
 		return true;
-	pass
 
 
 func _deSelect(pos):
 	var l = pos - global_position;
-	if l.length() < 10:
-		$army_sprite.self_modulate	= team_color
-		$range_sprite.visible		= false
-		$destination.visible		= false
-		selected 					= false
+	if l.length() < 10:	
+		_select_and_update_ui(false); 
 		return true;
-	pass
 
 
 func _on_Army_area_entered(area):
-	if area.get_class() == "Army":
-		print("hit army with team_id:",area.team_id)
-	
-		if area.team_id != team_id:
-			$status_label.text = "WAR!!"	
-		else:
-			$status_label.text = "sorry";
-	
 	destination = global_position
-	pass # Replace with function body.
+	if area.get_class() == "Army" and area.team_id != team_id:
+			enemyContactList.append(area)
+			_touch_enemy(area)
+	pass
+	
 
+func _on_Army_area_exited(area):
+	if area.get_class() == "Army" and area.team_id != team_id:
+			enemyContactList.erase(area)
+			_leave_enemy(area)
+	pass
+	
+## HELPER FUNKTIONER - FOR DETTE SCRIPT...	
+	
+func _select_and_update_ui(select:bool):
+		$range_sprite.visible		= select	# sprite der viser hvor langt enheden kan rykke
+		$destination.visible		= select	# sprite der markerer gyldige "muse-positioner"
+		selected					= select
+
+
+		
 func get_class():
 	return "Army"
+
+### FUNKTIONER DER SKAL IMPLEMENTERES I SUB-KLASSER : INFANTARI, BUESKYTTER OG KAVALLERI
+
+func _touch_enemy(enemy : Army): print("Basic Army Battle!");		pass
+
+func _leave_enemy(enemy : Army): print("Basic Army Left Battle!");	pass
