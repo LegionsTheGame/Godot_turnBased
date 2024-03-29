@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ArmyScene/Army/ArmyScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://MainScene/MainScene.gd" type="Script" id=3]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Team1" type="Sprite" parent="."]
+position = Vector2( -4, -240 )
+texture = ExtResource( 2 )
+
+[node name="Army1" parent="Team1" instance=ExtResource( 1 )]
+position = Vector2( -189, 110 )
+
+[node name="Army2" parent="Team1" instance=ExtResource( 1 )]
+position = Vector2( -4, 110 )
+
+[node name="Army3" parent="Team1" instance=ExtResource( 1 )]
+position = Vector2( 205, 114 )
