@@ -7,10 +7,20 @@
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = -500.0
+margin_top = -300.0
+margin_right = -400.0
+margin_bottom = -280.0
+rect_scale = Vector2( 2, 2 )
+text = "INFO TEXT "
+valign = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
 [node name="Team1" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0392157 )
 position = Vector2( -4, -240 )
 texture = ExtResource( 2 )
 
@@ -22,3 +32,17 @@ position = Vector2( -4, 110 )
 
 [node name="Army3" parent="Team1" instance=ExtResource( 1 )]
 position = Vector2( 205, 114 )
+
+[node name="Team2" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0392157 )
+position = Vector2( -8, 163 )
+texture = ExtResource( 2 )
+
+[node name="Army1" parent="Team2" instance=ExtResource( 1 )]
+position = Vector2( -181, 16 )
+
+[node name="Army2" parent="Team2" instance=ExtResource( 1 )]
+position = Vector2( 42, 14 )
+
+[node name="Army3" parent="Team2" instance=ExtResource( 1 )]
+position = Vector2( 277, 14 )
