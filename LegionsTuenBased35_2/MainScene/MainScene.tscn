@@ -24,14 +24,22 @@ self_modulate = Color( 1, 1, 1, 0.0392157 )
 position = Vector2( -4, -240 )
 texture = ExtResource( 2 )
 
+[node name="Army" parent="Team1" instance=ExtResource( 1 )]
+position = Vector2( -464, 239 )
+army_color = Color( 0.803922, 0.654902, 0.827451, 1 )
+team_id = 99
+
 [node name="Army1" parent="Team1" instance=ExtResource( 1 )]
 position = Vector2( -189, 110 )
+team_id = 1
 
 [node name="Army2" parent="Team1" instance=ExtResource( 1 )]
 position = Vector2( -4, 110 )
+team_id = 1
 
 [node name="Army3" parent="Team1" instance=ExtResource( 1 )]
 position = Vector2( 205, 114 )
+team_id = 1
 
 [node name="Team2" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.0392157 )
@@ -40,9 +48,15 @@ texture = ExtResource( 2 )
 
 [node name="Army1" parent="Team2" instance=ExtResource( 1 )]
 position = Vector2( -181, 16 )
+army_color = Color( 0.27451, 0.27451, 0.937255, 1 )
+team_id = 2
 
 [node name="Army2" parent="Team2" instance=ExtResource( 1 )]
 position = Vector2( 42, 14 )
+army_color = Color( 0.27451, 0.27451, 0.937255, 1 )
+team_id = 2
 
 [node name="Army3" parent="Team2" instance=ExtResource( 1 )]
 position = Vector2( 277, 14 )
+army_color = Color( 0.27451, 0.27451, 0.937255, 1 )
+team_id = 2

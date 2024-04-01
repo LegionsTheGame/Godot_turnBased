@@ -29,3 +29,6 @@ margin_top = -26.0
 margin_right = 57.0
 margin_bottom = -12.0
 text = "army"
+
+[connection signal="area_entered" from="." to="." method="_on_Army_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Army_area_exited"]
