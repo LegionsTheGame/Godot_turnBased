@@ -6,7 +6,8 @@ var list_team1					= []
 var selectedArmy : ArmyScene	= null
 
 func _ready():
-	list_team1		= $Team1.get_children()
+	list_team1.append_array($Team1.get_children())
+	list_team1.append_array($Team2.get_children())
 	info_text.text	= "Select an army by clicking on it"
 	pass
 
@@ -35,5 +36,8 @@ func _input(event):
 				if not valid_move :
 					info_text.text = "This is to far - your army can only move to somewhere inside the circle!"
 				else:
+					selectedArmy._set_attack_destination(get_global_mouse_position())
 					info_text.text = "Army moved to new destination!"
+					selectedArmy._set_selection(false)
+					selectedArmy = null
 	pass
