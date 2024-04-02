@@ -42,7 +42,6 @@ tracks/1/keys = {
 script = ExtResource( 4 )
 
 [node name="RangeScene" parent="." instance=ExtResource( 2 )]
-position = Vector2( -8, 24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

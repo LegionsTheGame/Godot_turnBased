@@ -11,13 +11,14 @@ onready var target_sprite :Sprite				= $TargetSprite
 onready var animation_player: AnimationPlayer	= $AnimationPlayer
 onready var label : Label						= $Label
 
-var life: int						= 3
+var life : int						= 3
 var army_size : int					= 16
 var selected : bool					= false
 var target_to_attack : ArmyScene	= null
 var enemies_touch_list 				= []
 var destination : Vector2
 
+signal kill_signal(army)
 
 func _ready():
 	_set_selection(false)
@@ -57,9 +58,8 @@ func _start_explotion():
 	if life == 1 : $life2.visible = false
 	if life == 0 : $life1.visible = false
 	if life ==-1 : 
-		#do some stufe to kill it !!!!!!!!
-		pass
-		#self.queue_free()
+		emit_signal("kill_signal",self)
+		print("kill_signal emitted!!!")
 		
 	pass
 
