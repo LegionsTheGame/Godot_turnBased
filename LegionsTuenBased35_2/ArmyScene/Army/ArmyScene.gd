@@ -11,6 +11,7 @@ onready var target_sprite :Sprite				= $TargetSprite
 onready var animation_player: AnimationPlayer	= $AnimationPlayer
 onready var label : Label						= $Label
 
+var life: int						= 3
 var army_size : int					= 16
 var selected : bool					= false
 var target_to_attack : ArmyScene	= null
@@ -51,6 +52,15 @@ func _set_as_target(is_target : bool):
 
 func _start_explotion():
 	animation_player.play("Explotion")
+	life = life -1
+	if life == 2 : $life3.visible = false
+	if life == 1 : $life2.visible = false
+	if life == 0 : $life1.visible = false
+	if life ==-1 : 
+		#do some stufe to kill it !!!!!!!!
+		pass
+		#self.queue_free()
+		
 	pass
 
 func _set_destination(new_destination: Vector2):

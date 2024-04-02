@@ -18,7 +18,7 @@ func _show_range(showit:bool):
 
 func _is_inside(position:Vector2):
 	var v = global_position - position
-	if v.length() < radius:
+	if v.length() < radius + 10:
 		return true 
 	pass
 
