@@ -10,6 +10,8 @@ onready var army_sprite : Sprite				= $ArmySprite
 onready var target_sprite :Sprite				= $TargetSprite
 onready var animation_player: AnimationPlayer	= $AnimationPlayer
 onready var label : Label						= $Label
+onready var soundExp : AudioStreamPlayer2D		= $AudioExp
+onready var soundMarch : AudioStreamPlayer2D	= $AudioMarch
 
 var life : int						= 3
 var army_size : int					= 16
@@ -34,6 +36,11 @@ func _process(delta):
 	var v = global_position - destination
 	if v.length() > 2:
 		global_position = global_position - v.normalized()
+		if not soundMarch.playing:
+			soundMarch.play()
+	else:
+		soundMarch.stop()
+		pass
 
 func _is_army_position(global_selected_position : Vector2):
 	var v = global_selected_position - global_position
@@ -53,6 +60,7 @@ func _set_as_target(is_target : bool):
 
 func _start_explotion():
 	animation_player.play("Explotion")
+	soundExp.play()
 	life = life -1
 	if life == 2 : $life3.visible = false
 	if life == 1 : $life2.visible = false

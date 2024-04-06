@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/march.mp3-b782193ee45942063698c796549f8214.mp3str"
+
+[deps]
+
+source_file="res://ArmyScene/Army/march.mp3"
+dest_files=[ "res://.import/march.mp3-b782193ee45942063698c796549f8214.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

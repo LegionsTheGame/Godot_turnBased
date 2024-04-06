@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ArmyScene/Army/ArmySprite.png" type="Texture" id=1]
 [ext_resource path="res://ArmyScene/Range/RangeScene.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://ArmyScene/Army/ArmyScene.gd" type="Script" id=4]
 [ext_resource path="res://ArmyScene/Army/explotion.png" type="Texture" id=5]
 [ext_resource path="res://ArmyScene/Army/life.png" type="Texture" id=6]
+[ext_resource path="res://ArmyScene/Army/explotion.wav" type="AudioStream" id=7]
+[ext_resource path="res://ArmyScene/Army/march.mp3" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -85,6 +87,12 @@ texture = ExtResource( 6 )
 position = Vector2( 5.99999, -8 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
+
+[node name="AudioMarch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioExp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="area_entered" from="." to="." method="_on_Army_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Army_area_exited"]
