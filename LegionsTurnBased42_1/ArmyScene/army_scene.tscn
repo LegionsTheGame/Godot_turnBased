@@ -12,7 +12,9 @@ script = ExtResource("1_hdg0p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0ga6x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ArmySprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_02xdi")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[node name="ArmySelectedSprite" type="Sprite2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
