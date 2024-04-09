@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://chufp3rm2126v"]
+
+[ext_resource type="Texture2D" uid="uid://c7kgh0ni6hw7d" path="res://ArmyScene/ArmySprite.png" id="1_02xdi"]
+[ext_resource type="Script" path="res://ArmyScene/army_scene.gd" id="1_hdg0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ga6x"]
+
+[node name="ArmyScene" type="Area2D"]
+script = ExtResource("1_hdg0p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ga6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_02xdi")
