@@ -16,3 +16,8 @@ func _process(delta):
 func _set_destination(d:Vector2):
 	destination = d
 	pass
+
+
+func _on_mouse_entered():
+	print("mouse entered army")
+	pass
