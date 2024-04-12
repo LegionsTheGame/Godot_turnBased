@@ -1,20 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://chufp3rm2126v"]
+[gd_scene load_steps=10 format=3 uid="uid://chufp3rm2126v"]
 
 [ext_resource type="Texture2D" uid="uid://c7kgh0ni6hw7d" path="res://ArmyScene/ArmySprite.png" id="1_02xdi"]
 [ext_resource type="Script" path="res://ArmyScene/army_scene.gd" id="1_hdg0p"]
+[ext_resource type="Script" path="res://ArmyScene/selected_node.gd" id="2_044xe"]
+[ext_resource type="Texture2D" uid="uid://bhixtj4vfbhrn" path="res://ArmyScene/ArmySelectedSprite.png" id="3_cgq1c"]
+[ext_resource type="Texture2D" uid="uid://dkhoorg73arg8" path="res://ArmyScene/explotion.png" id="3_km5gl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ga6x"]
 size = Vector2(16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_csa75"]
+radius = 128.25
+
+[sub_resource type="Animation" id="Animation_viow4"]
+resource_name = "explode"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationExplotion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 1.4, 2, 2.6, 3.2, 3.8, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationExplotion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3et8c"]
+_data = {
+"explode": SubResource("Animation_viow4")
+}
+
 [node name="ArmyScene" type="Area2D"]
+collision_layer = 3
 script = ExtResource("1_hdg0p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2Ds" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0ga6x")
 
 [node name="ArmySprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_02xdi")
 
-[node name="ArmySelectedSprite" type="Sprite2D" parent="."]
+[node name="AnimationExplotion" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_km5gl")
+hframes = 3
+vframes = 3
+frame = 6
 
+[node name="SelectedNode" type="Area2D" parent="."]
+visible = false
+script = ExtResource("2_044xe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectedNode"]
+shape = SubResource("CircleShape2D_csa75")
+
+[node name="ArmySelectedSprite" type="Sprite2D" parent="SelectedNode"]
+texture = ExtResource("3_cgq1c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3et8c")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
