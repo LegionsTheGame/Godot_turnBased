@@ -12,22 +12,22 @@ func _ready():
 	pass
 
 func _input(event):
-	
-	if Input.is_action_just_pressed("mouse_left") and army_in_progress != null:
+
+	if event.is_action_pressed("mouse_left") and army_in_progress != null and army_in_progress._is_selected():
 		
 		var mpos = get_global_mouse_position()
 		
 		if army_in_progress._in_range(mpos):
-			
 			army_in_progress._set_destination(mpos)
 
-		elif army_in_progress._is_selected():
-			
+		else:
 			army_in_progress._set_selected(false)
-			army_in_progress = null	
+			army_in_progress = null
+				
 	pass
 
 func _on_army_signal_recived(army:Army):
+
 	if army_in_progress == null:
 		army_in_progress = army
 		army_in_progress._set_selected(true)
