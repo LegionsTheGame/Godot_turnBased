@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ogq412v2b3v"]
+
+[ext_resource type="Texture2D" uid="uid://d05m4mrricvbq" path="res://ArmyScene/sprite_army.png" id="1_l23ko"]
+[ext_resource type="Script" path="res://ArmyScene/script_army.gd" id="1_v6h56"]
+[ext_resource type="Script" path="res://ArmyScene/script_movearea.gd" id="2_yix4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mty2k"]
+
+[node name="SceneArmy" type="Area2D"]
+script = ExtResource("1_v6h56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mty2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l23ko")
+
+[node name="MoveArea" type="Node2D" parent="."]
+script = ExtResource("2_yix4g")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

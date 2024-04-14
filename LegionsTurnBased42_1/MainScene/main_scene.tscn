@@ -13,7 +13,7 @@ position_smoothing_enabled = true
 [node name="Armies" type="Node" parent="."]
 
 [node name="ArcherScene" parent="Armies" instance=ExtResource("3_5txxn")]
-position = Vector2(-184, 88)
+position = Vector2(-296, -16)
 
 [node name="ArmyScene2_1" parent="Armies" instance=ExtResource("1_gem2j")]
 team_number = 2
