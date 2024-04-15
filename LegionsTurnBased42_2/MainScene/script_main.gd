@@ -13,14 +13,11 @@ func _ready():
 
 func _input(event):
 	if armyInFocus != null and armyInFocus.is_selected() and event.is_action_pressed("mouse_left"):
-		print("army flyttes", armyInFocus)
 		armyInFocus.set_destination(get_global_mouse_position())
 	pass
 
 func _recived_army_selected(army:Army):
-	print("new army selected - armyInFocus : ",armyInFocus)
 	if armyInFocus != null and not armyInFocus.is_ready() : return
-	print("army vælges", army)
 	armyInFocus = army
 	armyInFocus.set_selected()
 	pass

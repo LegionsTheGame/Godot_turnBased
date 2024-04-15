@@ -1,10 +1,14 @@
 extends Area2D
 class_name Army
 
+@export var team_number : int = 0
+
+@onready var animationplayer : AnimationPlayer = $AnimationPlayer
+
 @onready var destination : Vector2	= global_position
 @onready var velocity : Vector2		= Vector2.ZERO	
 
-enum { READY, SELECTED , MOVEING , FIGHTING,  DONE }
+enum { READY, SELECTED , MOVEING , FIGHTING, DONE }
 var state = READY
 
 signal signalSelected(army)
@@ -40,7 +44,7 @@ func _process(delta):
 	
 	
 func _on_input_event(viewport, event, shape_idx):
-	if state == READY and event.is_action_pressed("mouse_left"):
+	if event.is_action_pressed("mouse_left"):
 		emit_signal("signalSelected",self)
 		pass
 	pass
@@ -76,6 +80,3 @@ func set_fighting():	state = FIGHTING
 func is_fighting():		return state == FIGHTING
 
 func is_done():			return state == DONE
-
-
-

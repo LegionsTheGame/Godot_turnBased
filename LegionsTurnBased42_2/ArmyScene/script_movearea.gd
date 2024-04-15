@@ -1,4 +1,5 @@
 extends Node2D
+class_name MoveingArea
 
 var radius = 120
 
@@ -7,5 +8,4 @@ func _draw():
 
 func inside(p:Vector2):
 	var L = (p-global_position).length()
-	print(str(L), " L er stor nok til move")
 	return L < radius

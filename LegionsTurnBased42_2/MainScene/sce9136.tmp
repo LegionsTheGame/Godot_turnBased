@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MainScene/script_main.gd" id="1_l8e2n"]
 [ext_resource type="PackedScene" uid="uid://c5ogq412v2b3v" path="res://ArmyScene/scene_army.tscn" id="2_2m1ud"]
-[ext_resource type="PackedScene" uid="uid://cbsgnl3hrtghq" path="res://ArcherScene/archer_scene.tscn" id="3_fg2sj"]
+[ext_resource type="PackedScene" uid="uid://sgrwftf2g8p8" path="res://ArcherScene/scene_archer.tscn" id="2_12nks"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_l8e2n")
@@ -11,20 +11,17 @@ script = ExtResource("1_l8e2n")
 
 [node name="Armies" type="Node2D" parent="."]
 
-[node name="ArcherScene" parent="Armies" instance=ExtResource("3_fg2sj")]
-position = Vector2(-106, 80)
-team_number = 0
+[node name="SceneArcher" parent="Armies" instance=ExtResource("2_12nks")]
+position = Vector2(-71, 47)
 
 [node name="SceneArmy3" parent="Armies" instance=ExtResource("2_2m1ud")]
 position = Vector2(-163, -84)
-team_number = 2
 
 [node name="SceneArmy2" parent="Armies" instance=ExtResource("2_2m1ud")]
 position = Vector2(156, -184)
 
 [node name="SceneArmy1" parent="Armies" instance=ExtResource("2_2m1ud")]
 position = Vector2(-235, -110)
-team_number = 1
 
 [node name="ResetTurn" type="Button" parent="."]
 offset_left = 409.0
