@@ -8,7 +8,7 @@ class_name Army
 @onready var destination : Vector2	= global_position
 @onready var velocity : Vector2		= Vector2.ZERO	
 
-enum { READY, SELECTED , MOVEING , FIGHTING, DONE }
+enum { READY, SELECTED , MOVEING , FIGHTING, DONE_SIGNAL, DONE }
 var state = READY
 
 signal signalSelected(army)
@@ -23,7 +23,8 @@ func _process(delta):
 
 	if state == SELECTED:
 		$MoveArea.visible	= true
-		if L.length() > 5 : state = MOVEING
+		if L.length() > 5 : 
+			state = MOVEING
 
 	if state == MOVEING:
 		$MoveArea.visible = false
@@ -32,13 +33,19 @@ func _process(delta):
 			velocity = L.normalized()
 		else: 				
 			velocity = Vector2.ZERO
-			state = DONE
+			state = DONE_SIGNAL
+	
+	if state == DONE_SIGNAL:
+			destination = global_position
 			emit_signal("signalDone",self)
+			$MoveArea.visible = false
+			state = DONE
 	
 	if state == FIGHTING:
 		velocity 	= Vector2.ZERO
 		destination = global_position
-		
+		# Næste state bliver sat når eksplotionen er færdig
+	
 	$Label.text = str(state)
 	pass
 	
@@ -58,8 +65,7 @@ func _on_area_entered(area):
 
 func _on_animation_player_animation_finished(anim_name):
 	if is_fighting():
-		state = DONE
-		emit_signal("signalDone",self)
+		state = DONE_SIGNAL
 	pass
 	
 func set_destination(p:Vector2):

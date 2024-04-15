@@ -14,9 +14,5 @@ func set_destination(p:Vector2):
 
 func recivedSignalEnemyTargetSelected(army:Army):
 	army.animationplayer.play("explotion")
-	destination = global_position
-	state = DONE
-	$MoveArea.visible = false
-	emit_signal("signalDone",self)
-	print("der er modtaget signal om at et enemy target er valgt!")
+	state = DONE_SIGNAL
 	pass

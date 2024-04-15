@@ -13,7 +13,6 @@ script = ExtResource("1_l8e2n")
 
 [node name="ArcherScene" parent="Armies" instance=ExtResource("3_fg2sj")]
 position = Vector2(-106, 80)
-team_number = 0
 
 [node name="SceneArmy3" parent="Armies" instance=ExtResource("2_2m1ud")]
 position = Vector2(-163, -84)

@@ -21,9 +21,9 @@ func inside(p:Vector2):
 
 func _on_area_entered(area):
 	if area is Army and area.team_number != team_number:
-		enemies.append(area)
-		area.signalSelected.connect(_enemy_target_selected)
-		print("NEW ARMY IN SHOOTING AREA")
+		var a : Army = area
+		enemies.append(a)
+		a.signalSelected.connect(_enemy_target_selected)
 	pass
 
 func _on_area_exited(area):
