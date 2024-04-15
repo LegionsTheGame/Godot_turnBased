@@ -18,6 +18,7 @@ func _input(event):
 	pass
 
 func _recived_army_selected(army:Army):
+	print("new army selected - armyInFocus : ",armyInFocus)
 	if armyInFocus != null and not armyInFocus.is_ready() : return
 	print("army vælges", army)
 	armyInFocus = army

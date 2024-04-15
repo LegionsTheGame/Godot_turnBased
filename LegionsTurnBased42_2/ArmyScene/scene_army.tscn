@@ -1,10 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5ogq412v2b3v"]
+[gd_scene load_steps=8 format=3 uid="uid://c5ogq412v2b3v"]
 
 [ext_resource type="Texture2D" uid="uid://d05m4mrricvbq" path="res://ArmyScene/sprite_army.png" id="1_l23ko"]
 [ext_resource type="Script" path="res://ArmyScene/script_army.gd" id="1_v6h56"]
 [ext_resource type="Script" path="res://ArmyScene/script_movearea.gd" id="2_yix4g"]
+[ext_resource type="Texture2D" uid="uid://ct7lv30y66ofu" path="res://ArmyScene/sprite_explotion.png" id="3_dmafd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mty2k"]
+
+[sub_resource type="Animation" id="Animation_dm414"]
+resource_name = "explotion"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.6, 1.1, 1.6, 2.1, 2.6, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38llp"]
+_data = {
+"explotion": SubResource("Animation_dm414")
+}
 
 [node name="SceneArmy" type="Area2D"]
 script = ExtResource("1_v6h56")
@@ -12,8 +46,15 @@ script = ExtResource("1_v6h56")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mty2k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ArmySprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_l23ko")
+
+[node name="ExplodeSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_dmafd")
+hframes = 3
+vframes = 3
+frame = 6
 
 [node name="MoveArea" type="Node2D" parent="."]
 script = ExtResource("2_yix4g")
@@ -22,5 +63,11 @@ script = ExtResource("2_yix4g")
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_38llp")
+}
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

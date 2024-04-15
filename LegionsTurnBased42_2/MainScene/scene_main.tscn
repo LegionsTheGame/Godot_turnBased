@@ -11,7 +11,7 @@ script = ExtResource("1_l8e2n")
 [node name="Armies" type="Node2D" parent="."]
 
 [node name="SceneArmy3" parent="Armies" instance=ExtResource("2_2m1ud")]
-position = Vector2(-115, -49)
+position = Vector2(-163, -84)
 
 [node name="SceneArmy2" parent="Armies" instance=ExtResource("2_2m1ud")]
 position = Vector2(156, -184)

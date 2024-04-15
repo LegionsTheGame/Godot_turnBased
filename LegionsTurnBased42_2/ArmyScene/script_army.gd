@@ -47,8 +47,15 @@ func _on_input_event(viewport, event, shape_idx):
 	
 func _on_area_entered(area):
 	if area is Army:
-		area.set_fighting()
 		global_position -= 3*velocity
+		$AnimationPlayer.play("explotion")
+		if area.is_moveing(): area.set_fighting()
+	pass
+
+func _on_animation_player_animation_finished(anim_name):
+	if is_fighting():
+		state = DONE
+		emit_signal("signalDone",self)
 	pass
 	
 func set_destination(p:Vector2):
@@ -69,5 +76,6 @@ func set_fighting():	state = FIGHTING
 func is_fighting():		return state == FIGHTING
 
 func is_done():			return state == DONE
+
 
 

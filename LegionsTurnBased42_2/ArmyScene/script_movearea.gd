@@ -8,4 +8,4 @@ func _draw():
 func inside(p:Vector2):
 	var L = (p-global_position).length()
 	print(str(L), " L er stor nok til move")
-	return L < radius and L > 20
+	return L < radius
