@@ -1,13 +1,13 @@
 extends Node2D
 class_name Main
 
-var armies 	= []
+var team0 	= []
 var armyInFocus :Army	= null
 
 
 func _ready():
-	armies 	= $Armies.get_children()
-	for a in armies:
+	team0 	= $HumanTeam.get_children()
+	for a in team0:
 		a.signalSelected.connect(_recived_army_selected)
 		a.signalDone.connect(_recived_army_done)
 	pass
@@ -20,14 +20,14 @@ func _input(event):
 
 
 func _recived_army_selected(army:Army):
-	print("A selected : ", army, " armyInFocus : ", armyInFocus)
+	#print("A selected : ", army, " armyInFocus : ", armyInFocus)
 	# Det er lidt indviklet hvornår man må vælge en ny hær!!
 	# .... dette kan forbedres
 	# .... måske behøver man ikke at sætte armyInFocus til null
 	if (army.is_ready() and armyInFocus == null) or (army.is_ready() and armyInFocus != null and armyInFocus.is_ready()):
 		armyInFocus = army
 		armyInFocus.set_selected()
-	print("B selected : ", army, " armyInFocus : ", armyInFocus)
+	#print("B selected : ", army, " armyInFocus : ", armyInFocus)
 	pass
 
 
@@ -39,6 +39,6 @@ func _recived_army_done(army:Army):
 
 
 func _on_reset_turn_button_down():
-	for a in armies:
+	for a in team0:
 		a.set_ready();
 	pass

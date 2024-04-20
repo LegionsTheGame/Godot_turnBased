@@ -1,3 +1,4 @@
+# script_army.gd
 extends ArmyStates
 class_name Army
 
