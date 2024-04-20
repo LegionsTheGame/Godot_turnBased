@@ -78,12 +78,21 @@ func _on_input_event(viewport, event, shape_idx):
 func _on_area_entered(area):
 	#print(area.state, area.velocity)
 	if area is Army and area.team_number != team_number:
-		global_position -= 3*velocity
-		$AnimationPlayer.play("explotion")
-		if area.is_moveing(): area.set_fighting()
-	if area is Army and area.team_number == team_number and is_moveing():
-		global_position -= 3*velocity
-		state = DONE_SIGNAL
+			#global_position -= 3*velocity
+			var d = area.global_position - global_position
+			global_position -= d.normalized()*2
+			#dette er forhindring af bump ind i krige
+			if is_moveing() : 
+				$AnimationPlayer.play("explotion")
+				set_fighting()
+			elif area.is_moveing() or area.is_fighting(): 
+				$AnimationPlayer.play("explotion")
+	if area is Army and area.team_number == team_number: # and is_moveing():
+		#global_position -= 3*velocity
+		var d = area.global_position - global_position
+		global_position -= d.normalized()*2
+		if is_moveing(): state = DONE_SIGNAL
+
 	pass
 
 func _on_animation_player_animation_finished(anim_name):

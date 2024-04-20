@@ -51,6 +51,7 @@ position = Vector2(296, -120)
 team_number = 1
 
 [node name="ArcherScene" parent="HumanTeam" instance=ExtResource("3_fg2sj")]
+position = Vector2(0, -120)
 team_number = 1
 
 [node name="ComputerTeam" type="Node2D" parent="."]

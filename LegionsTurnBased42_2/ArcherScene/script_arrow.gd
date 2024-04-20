@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	var L = destination - global_position
 	if L.length() > 5:
-		global_position += L.normalized()
+		global_position += L.normalized()*4
 	pass
 
 func _on_area_entered(area):

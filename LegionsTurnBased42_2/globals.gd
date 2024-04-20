@@ -1,3 +1,2 @@
+# globals.gd
 extends Node
-
-enum { READY, SELECTED , MOVEING , FIGHTING, SHOOTING, DONE_SIGNAL, DONE }
