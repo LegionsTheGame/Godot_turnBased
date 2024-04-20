@@ -48,7 +48,7 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			state = DONE_SIGNAL
 	
-	if state == FIGHTING:
+	if state == ATTACKING:
 		$MoveArea.visible = false
 		velocity 	= Vector2.ZERO
 		destination = global_position
@@ -84,8 +84,8 @@ func _on_area_entered(area):
 			#dette er forhindring af bump ind i krige
 			if is_moveing() : 
 				$AnimationPlayer.play("explotion")
-				set_fighting()
-			elif area.is_moveing() or area.is_fighting(): 
+				set_attacking()
+			elif area.is_moveing() or area.is_attacking(): 
 				$AnimationPlayer.play("explotion")
 	if area is Army and area.team_number == team_number: # and is_moveing():
 		#global_position -= 3*velocity
@@ -96,7 +96,7 @@ func _on_area_entered(area):
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
-	if is_fighting():
+	if is_attacking():
 		state = DONE_SIGNAL
 	pass
 	
