@@ -4,6 +4,7 @@ extends "res://ArmyScene/script_army.gd"
 var SHOOTING = 6
 
 func _ready():
+	super._ready()
 	$MoveArea/ShootingArea.team_number = team_number
 	$MoveArea/ShootingArea.signalEnemyTargetSelected.connect(recivedSignalEnemyTargetSelected)
 	

@@ -12,17 +12,29 @@ script = ExtResource("1_l8e2n")
 [node name="Armies" type="Node2D" parent="."]
 
 [node name="ArcherScene" parent="Armies" instance=ExtResource("3_fg2sj")]
-position = Vector2(-106, 80)
+position = Vector2(296, -34)
 
-[node name="SceneArmy3" parent="Armies" instance=ExtResource("2_2m1ud")]
-position = Vector2(-163, -84)
+[node name="SceneArmy2_2" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(299, -85)
+
+[node name="SceneArmy2_1" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(-96, 199)
 team_number = 2
 
-[node name="SceneArmy2" parent="Armies" instance=ExtResource("2_2m1ud")]
-position = Vector2(156, -184)
+[node name="SceneArmy1_4" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(-471, -4)
+team_number = 1
 
-[node name="SceneArmy1" parent="Armies" instance=ExtResource("2_2m1ud")]
-position = Vector2(-235, -110)
+[node name="SceneArmy1_3" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(-472, 35)
+team_number = 1
+
+[node name="SceneArmy1_2" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(-470, -43)
+team_number = 1
+
+[node name="SceneArmy1_1" parent="Armies" instance=ExtResource("2_2m1ud")]
+position = Vector2(-469, -82)
 team_number = 1
 
 [node name="ResetTurn" type="Button" parent="."]

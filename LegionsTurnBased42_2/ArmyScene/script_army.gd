@@ -14,15 +14,24 @@ var state = READY
 signal signalSelected(army)
 signal signalDone(army)
 
+func _ready():
+	if team_number == 0:
+		$ArmySprite.self_modulate = Color.CHARTREUSE
+	if team_number == 1:
+		$ArmySprite.self_modulate = Color.GOLD
+	if team_number == 2:
+		$ArmySprite.self_modulate = Color.RED
+	pass
+
 
 func _process(delta):
 	var L = (destination - global_position)
 		
 	if state == READY:
-		$MoveArea.visible	= false
+		$MoveArea.visible = false
 
 	if state == SELECTED:
-		$MoveArea.visible	= true
+		$MoveArea.visible = true
 		if L.length() > 5 : 
 			state = MOVEING
 
@@ -57,10 +66,13 @@ func _on_input_event(viewport, event, shape_idx):
 	pass
 	
 func _on_area_entered(area):
-	if area is Army:
+	if area is Army and area.team_number != team_number:
 		global_position -= 3*velocity
 		$AnimationPlayer.play("explotion")
 		if area.is_moveing(): area.set_fighting()
+	if area is Army and area.team_number == team_number and velocity != Vector2.ZERO:
+		global_position -= 3*velocity
+		state = DONE_SIGNAL
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
