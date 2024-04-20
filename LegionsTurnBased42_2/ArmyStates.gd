@@ -17,4 +17,6 @@ func is_moveing():		return state == MOVEING
 func set_fighting():	state = FIGHTING
 func is_fighting():		return state == FIGHTING
 
+func set_done():		state = DONE
 func is_done():			return state == DONE
+

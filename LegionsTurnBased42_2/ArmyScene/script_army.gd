@@ -56,6 +56,9 @@ func _process(delta):
 		destination = global_position
 		# Næste state bliver sat når eksplotionen er færdig
 	
+	if state == DONE:
+		$MoveArea.visible = false	
+	
 	$Label.text = str(state)
 	pass
 	

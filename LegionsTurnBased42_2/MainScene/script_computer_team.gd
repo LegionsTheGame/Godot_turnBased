@@ -6,6 +6,8 @@ var computerTeam 	= []
 var armyInFocus :Army	= null
 var indexArmy = 0
 
+signal signalComputerTurnFinished 
+
 func _ready():
 	humanTeam = $"../HumanTeam".get_children()
 	computerTeam = get_children()
@@ -13,6 +15,7 @@ func _ready():
 	for a in computerTeam:
 		var army : Army = a 
 		army.signalDone.connect(_recived_army_done)
+		army.set_done()
 		pass
 	pass
 
@@ -33,7 +36,8 @@ func _recived_army_done(army:Army):
 	if indexArmy < computerTeam.size()-1:
 		indexArmy +=1 
 		armyInFocus = computerTeam[indexArmy]
-		
+	else:
+		emit_signal("signalComputerTurnFinished")
 	pass
 
 func _on_reset_computer_turn_button_down():
