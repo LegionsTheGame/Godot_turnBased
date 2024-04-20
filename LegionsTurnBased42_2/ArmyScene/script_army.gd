@@ -30,9 +30,12 @@ func _process(delta):
 		
 	if state == READY:
 		$MoveArea.visible = false
+		velocity 	= Vector2.ZERO
+		destination = global_position
 
 	if state == SELECTED:
 		$MoveArea.visible = true
+		velocity 	= Vector2.ZERO
 		if L.length() > 5 : 
 			state = MOVEING
 
@@ -45,19 +48,22 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			state = DONE_SIGNAL
 	
-	if state == DONE_SIGNAL:
-			destination = global_position
-			emit_signal("signalDone",self)
-			$MoveArea.visible = false
-			state = DONE
-	
 	if state == FIGHTING:
+		$MoveArea.visible = false
 		velocity 	= Vector2.ZERO
 		destination = global_position
 		# Næste state bliver sat når eksplotionen er færdig
+		
+	if state == DONE_SIGNAL:
+		$MoveArea.visible = false
+		velocity 	= Vector2.ZERO
+		destination = global_position
+		emit_signal("signalDone",self)
+		state = DONE
 	
 	if state == DONE:
 		$MoveArea.visible = false	
+		velocity = Vector2.ZERO
 	
 	$Label.text = str(state)
 	pass
@@ -70,11 +76,12 @@ func _on_input_event(viewport, event, shape_idx):
 	pass
 	
 func _on_area_entered(area):
+	#print(area.state, area.velocity)
 	if area is Army and area.team_number != team_number:
 		global_position -= 3*velocity
 		$AnimationPlayer.play("explotion")
 		if area.is_moveing(): area.set_fighting()
-	if area is Army and area.team_number == team_number and velocity != Vector2.ZERO:
+	if area is Army and area.team_number == team_number and is_moveing():
 		global_position -= 3*velocity
 		state = DONE_SIGNAL
 	pass

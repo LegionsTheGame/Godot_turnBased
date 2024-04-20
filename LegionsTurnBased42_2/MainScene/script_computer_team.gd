@@ -22,27 +22,32 @@ func _ready():
 
 func _process(delta):
 	if armyInFocus.is_ready():
+		print("computer started moving", indexArmy)
 		armyInFocus.set_selected()
 		var enemy = humanTeam[indexArmy%humanTeam.size()]
 		
 		var new_dir = (enemy.global_position - armyInFocus.global_position).normalized()
 		var new_pos = armyInFocus.global_position + new_dir*100
+		
+		#print(armyInFocus.global_position,new_pos)
+		
 		armyInFocus.set_destination(new_pos)
 	pass
 	
 	
 func _recived_army_done(army:Army):
-	#print("computer army done .. new army ",indexArmy )
+	print("computer done .. index",indexArmy ," ", army.name)
 	if indexArmy < computerTeam.size()-1:
 		indexArmy +=1 
 		armyInFocus = computerTeam[indexArmy]
 	else:
+		print("computer finished", indexArmy)
 		emit_signal("signalComputerTurnFinished")
 	pass
 
 func _on_reset_computer_turn_button_down():
-	indexArmy = 0
-	armyInFocus = computerTeam[indexArmy]
 	for a in computerTeam:
 		a.set_ready()
+	indexArmy = 0
+	armyInFocus = computerTeam[indexArmy]
 	pass
