@@ -1,7 +1,7 @@
 extends "res://ArmyScene/script_army.gd"
 
 @onready var arrow_scene = load("res://ArcherScene/arrow_scene.tscn")
-var SHOOTING = 6
+#var SHOOTING = 6
 
 func _ready():
 	super._ready()

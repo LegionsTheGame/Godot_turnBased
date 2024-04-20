@@ -1,4 +1,4 @@
-extends Area2D
+extends ArmyStates
 class_name Army
 
 @export var team_number : int = 0
@@ -8,8 +8,8 @@ class_name Army
 @onready var destination : Vector2	= global_position
 @onready var velocity : Vector2		= Vector2.ZERO	
 
-enum { READY, SELECTED , MOVEING , FIGHTING, DONE_SIGNAL, DONE }
-var state = READY
+#enum { READY, SELECTED , MOVEING , FIGHTING, DONE_SIGNAL, DONE }
+#var state = READY
 
 signal signalSelected(army)
 signal signalDone(army)
@@ -85,16 +85,3 @@ func set_destination(p:Vector2):
 		destination = p
 	else:
 		state = READY
-
-func set_ready():		state = READY
-func is_ready():		return state == READY
-
-func set_selected():	state = SELECTED
-func is_selected():		return state == SELECTED
-
-func is_moveing():		return state == MOVEING
-
-func set_fighting():	state = FIGHTING
-func is_fighting():		return state == FIGHTING
-
-func is_done():			return state == DONE
