@@ -38,7 +38,7 @@ func _recived_army_done(army:Army):
 		armyInFocus = null
 		pass
 	selectNextFocusArmy()
-	print("human team done")
+	#print("human team done")
 	pass
 
 func _on_reset_human_turn_button_down():

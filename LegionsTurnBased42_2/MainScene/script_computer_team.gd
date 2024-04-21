@@ -22,7 +22,7 @@ func _ready():
 
 func _process(delta):
 	if armyInFocus.is_ready():
-		print("computer started moving", indexArmy)
+		#print("computer started moving", indexArmy)
 		armyInFocus.set_selected()
 		var enemy = humanTeam[indexArmy%humanTeam.size()]
 		
@@ -36,12 +36,12 @@ func _process(delta):
 	
 	
 func _recived_army_done(army:Army):
-	print("computer done .. index",indexArmy ," ", army.name)
+	#print("computer done .. index",indexArmy ," ", army.name)
 	if indexArmy < computerTeam.size()-1:
 		indexArmy +=1 
 		armyInFocus = computerTeam[indexArmy]
 	else:
-		print("computer finished", indexArmy)
+		#print("computer finished", indexArmy)
 		emit_signal("signalComputerTurnFinished")
 	pass
 

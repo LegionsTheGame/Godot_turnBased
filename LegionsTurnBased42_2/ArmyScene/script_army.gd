@@ -9,8 +9,9 @@ class_name Army
 @onready var destination : Vector2	= global_position
 @onready var velocity : Vector2		= Vector2.ZERO	
 
-#enum { READY, SELECTED , MOVEING , FIGHTING, DONE_SIGNAL, DONE }
-#var state = READY
+var health = 4
+var attack_strength 	= 3
+var deffend_strength 	= 2
 
 signal signalSelected(army)
 signal signalDone(army)
@@ -65,7 +66,7 @@ func _process(delta):
 		$MoveArea.visible = false	
 		velocity = Vector2.ZERO
 	
-	$Label.text = str(state)
+	$Label.text = str(state) + "/" + str(health)
 	pass
 	
 	
@@ -87,6 +88,9 @@ func _on_area_entered(area):
 				set_attacking()
 			elif area.is_moveing() or area.is_attacking(): 
 				$AnimationPlayer.play("explotion")
+				last_state = state
+				set_defending()
+			calculate_casualties(area)
 	if area is Army and area.team_number == team_number: # and is_moveing():
 		#global_position -= 3*velocity
 		var d = area.global_position - global_position
@@ -95,9 +99,38 @@ func _on_area_entered(area):
 
 	pass
 
+
+func calculate_casualties(enemy:Army):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	if is_attacking():
+		print("ATTACK CALCULATIONS");
+		var attack  = rng.randi_range(0,attack_strength)
+		var deffend = rng.randi_range(0,enemy.deffend_strength)
+		print("Attack: " + str(attack) + " Defend: " + str(deffend))
+		if(attack > deffend ):
+			enemy.health -= 1;
+		else:
+			health -= 1
+		pass
+	if is_defending():
+		print("DEFEND CALCULATIONS");
+		var attack  = rng.randi_range(0,enemy.attack_strength)
+		var deffend = rng.randi_range(0,deffend_strength)
+		print("Attack: " + str(attack) + " Defend: " + str(deffend))
+		if(attack > deffend ):
+			health -= 1;
+		else:
+			enemy.health -= 1
+		pass
+	pass
+
 func _on_animation_player_animation_finished(anim_name):
 	if is_attacking():
 		state = DONE_SIGNAL
+	if is_defending():
+		state = last_state
+		pass
 	pass
 	
 func set_destination(p:Vector2):

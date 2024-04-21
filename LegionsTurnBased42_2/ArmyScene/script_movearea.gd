@@ -10,5 +10,5 @@ func _draw():
 
 func inside(p:Vector2):
 	var L = (p-global_position).length()
-	print("in move area",L,L < radius)
+	#print("in move area",L,L < radius)
 	return L < radius
