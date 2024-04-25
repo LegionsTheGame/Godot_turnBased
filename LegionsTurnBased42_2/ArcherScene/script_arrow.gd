@@ -18,6 +18,12 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area == target:
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var attack  = rng.randi_range(0,6)
+		print("arrow hit : ", attack<3)
+		if(attack > 3):
+			area.health -= 1
 		emit_signal("arrowHitTarget")
 		queue_free()
 	pass

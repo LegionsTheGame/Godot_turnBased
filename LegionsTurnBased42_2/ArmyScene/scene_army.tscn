@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://ArmyScene/script_movearea.gd" id="2_yix4g"]
 [ext_resource type="Texture2D" uid="uid://ct7lv30y66ofu" path="res://ArmyScene/sprite_explotion.png" id="3_dmafd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mty2k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3vtu"]
 
 [sub_resource type="Animation" id="Animation_dm414"]
 resource_name = "explotion"
@@ -44,7 +44,7 @@ _data = {
 script = ExtResource("1_v6h56")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mty2k")
+shape = SubResource("CircleShape2D_t3vtu")
 
 [node name="ArmySprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_l23ko")

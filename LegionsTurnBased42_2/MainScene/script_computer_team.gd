@@ -6,21 +6,31 @@ var computerTeam 	= []
 var armyInFocus :Army	= null
 var indexArmy = 0
 
+var setUpTeam = true
+
 signal signalComputerTurnFinished 
 
-func _ready():
+func _ready():	
 	humanTeam = $"../HumanTeam".get_children()
 	computerTeam = get_children()
 	armyInFocus = computerTeam[indexArmy]
 	for a in computerTeam:
 		var army : Army = a 
 		army.signalDone.connect(_recived_army_done)
+		army.signalDead.connect(_recived_army_done)
 		army.set_done()
+		army.set_army_team(0)
 		pass
 	pass
 
 
 func _process(delta):
+	
+	if armyInFocus.is_dead():
+		indexArmy +=1 
+		armyInFocus = computerTeam[indexArmy]
+		pass
+	
 	if armyInFocus.is_ready():
 		#print("computer started moving", indexArmy)
 		armyInFocus.set_selected()
@@ -44,6 +54,7 @@ func _recived_army_done(army:Army):
 		#print("computer finished", indexArmy)
 		emit_signal("signalComputerTurnFinished")
 	pass
+
 
 func _on_reset_computer_turn_button_down():
 	for a in computerTeam:

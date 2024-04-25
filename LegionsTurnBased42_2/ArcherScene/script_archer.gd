@@ -21,7 +21,7 @@ func set_destination(p:Vector2):
 	elif $MoveArea/ShootingArea.inside(p):
 		pass
 	else:
-		state = READY
+		set_ready()
 
 func recivedSignalEnemyTargetSelected(army:Army):
 #	army.animationplayer.play("explotion")
@@ -35,5 +35,10 @@ func recivedSignalEnemyTargetSelected(army:Army):
 
 func targetHitSignalRecived():
 	print("The target is hit!")
-	state = DONE_SIGNAL
+	set_done_signal()
 	pass
+
+func set_army_team(t):
+	team_number = t
+	$MoveArea/ShootingArea.team_number = t
+	set_army_color()
