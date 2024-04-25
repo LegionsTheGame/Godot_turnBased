@@ -27,8 +27,11 @@ func _ready():
 func _process(delta):
 	
 	if armyInFocus.is_dead():
-		indexArmy +=1 
-		armyInFocus = computerTeam[indexArmy]
+		if indexArmy < computerTeam.size()-1: 
+			indexArmy +=1 
+			armyInFocus = computerTeam[indexArmy]
+		else:
+			emit_signal("signalComputerTurnFinished")
 		pass
 	
 	if armyInFocus.is_ready():

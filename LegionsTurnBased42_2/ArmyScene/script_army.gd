@@ -99,23 +99,22 @@ func _on_input_event(viewport, event, shape_idx):
 	
 func _on_area_entered(area):
 	#print(area.state, area.velocity)
-	if area is Army and area.team_number != team_number:
-			#global_position -= 3*velocity
-			#dette er forhindring af bump ind i krige
-			if is_moveing() : 
-				var d = area.global_position - global_position
-				global_position = area.global_position - d.normalized()*21
-				$AnimationPlayer.play("explotion")
-				set_attacking()
-				calculate_casualties(area)
-			elif area.is_moveing() or area.is_attacking(): 
-				$AnimationPlayer.play("explotion")
-				last_state = state
-				set_defending()
-	if area is Army and area.team_number == team_number: # and is_moveing():
-		if is_moveing(): 
-			var d = area.global_position - global_position
+	#Tvinger alle enheder til at have en afstand uden overlap
+	if area is Army:
+		var d : Vector2 = area.global_position - global_position
+		if d.length() < $CollisionShape2D.shape.radius*2:
 			global_position = area.global_position - d.normalized()*21
+	
+		if area.team_number != team_number:
+				if is_moveing() : 
+					$AnimationPlayer.play("explotion")
+					set_attacking()
+					calculate_casualties(area)
+				elif area.is_moveing() or area.is_attacking(): 
+					$AnimationPlayer.play("explotion")
+					last_state = state
+					set_defending()
+		if area.team_number == team_number and is_moveing(): 
 			set_done_signal()
 
 	pass
@@ -152,7 +151,7 @@ func set_destination(p:Vector2):
 	else:
 		set_ready()
 		return false
-		
+
 
 func set_ready():
 	changeColor = true;
@@ -160,11 +159,13 @@ func set_ready():
 	super.set_ready();
 	pass
 
+
 func set_done():
 	changeColor = true;
 	print(self.name, " done change color time!")
 	super.set_done();
 	pass
+
 
 func set_army_color(v=1):
 	if team_number == 0:	$ArmySprite.self_modulate = Color(v,0,0)

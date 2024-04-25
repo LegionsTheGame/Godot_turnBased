@@ -10,7 +10,6 @@
 script = ExtResource("1_l8e2n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 
 [node name="ResetHumanTurn" type="Button" parent="."]
 visible = false
