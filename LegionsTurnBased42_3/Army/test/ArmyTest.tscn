@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://fy1ksorcwmfr"]
+
+[ext_resource type="PackedScene" uid="uid://djrj3btx5j060" path="res://Army/scenes/scene_army.tscn" id="1_55kgc"]
+[ext_resource type="Script" path="res://Army/test/ArmyTest.gd" id="1_vws6x"]
+
+[node name="ArmyTest" type="Node2D"]
+script = ExtResource("1_vws6x")
+
+[node name="ComputerTeam" type="Node2D" parent="."]
+
+[node name="HumanTeam" type="Node2D" parent="."]
+
+[node name="Army" parent="HumanTeam" instance=ExtResource("1_55kgc")]
+position = Vector2(-65, 36)
+
+[node name="Army2" parent="HumanTeam" instance=ExtResource("1_55kgc")]
+position = Vector2(114, -25)
+
+[node name="Army3" parent="HumanTeam" instance=ExtResource("1_55kgc")]
+position = Vector2(80, -98)
+
+[node name="Army4" parent="HumanTeam" instance=ExtResource("1_55kgc")]
+position = Vector2(-72, -71)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 338.0
+offset_top = -257.0
+offset_right = 516.0
+offset_bottom = -222.0
+text = "human reset
+"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

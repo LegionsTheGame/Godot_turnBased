@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://djrj3btx5j060"]
+
+[ext_resource type="Script" path="res://Army/script_army.gd" id="1_etq0c"]
+[ext_resource type="Script" path="res://Army/script_state_ready.gd" id="2_3y4wv"]
+[ext_resource type="Texture2D" uid="uid://b4bw4vr0f6qeg" path="res://icon.svg" id="2_iiuvo"]
+[ext_resource type="Script" path="res://Army/script_state_move.gd" id="4_3wauu"]
+[ext_resource type="Script" path="res://Army/script_state_selected.gd" id="4_h6a0h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dx0d"]
+
+[node name="Army" type="Area2D"]
+script = ExtResource("1_etq0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4dx0d")
+
+[node name="ArmySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_iiuvo")
+
+[node name="stateReady" type="Node2D" parent="."]
+script = ExtResource("2_3y4wv")
+
+[node name="stateSelected" type="Node2D" parent="."]
+script = ExtResource("4_h6a0h")
+
+[node name="stateMove" type="Node2D" parent="."]
+script = ExtResource("4_3wauu")

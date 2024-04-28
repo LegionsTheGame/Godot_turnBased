@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://djrj3btx5j060"]
+
+[ext_resource type="Script" path="res://Army/code/code_army.gd" id="1_pwnqx"]
+[ext_resource type="Script" path="res://Army/code/SpriteArmy.gd" id="2_ct12t"]
+[ext_resource type="Script" path="res://Army/code/code_state_ready.gd" id="3_7kqs0"]
+[ext_resource type="Script" path="res://Army/code/SpriteMoveArea.gd" id="3_iilwf"]
+[ext_resource type="Script" path="res://Army/code/code_state_selected.gd" id="4_h6a0h"]
+[ext_resource type="Script" path="res://Army/code/code_state_move.gd" id="5_1xg3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dx0d"]
+
+[node name="Army" type="Area2D"]
+script = ExtResource("1_pwnqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4dx0d")
+
+[node name="ArmySprite" type="Sprite2D" parent="."]
+script = ExtResource("2_ct12t")
+
+[node name="MoveArea" type="Sprite2D" parent="."]
+visible = false
+script = ExtResource("3_iilwf")
+
+[node name="stateReady" type="Node2D" parent="."]
+script = ExtResource("3_7kqs0")
+
+[node name="stateSelected" type="Node2D" parent="."]
+script = ExtResource("4_h6a0h")
+
+[node name="stateMove" type="Node2D" parent="."]
+script = ExtResource("5_1xg3n")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -45.0
+offset_top = -38.0
+offset_right = -5.0
+offset_bottom = -15.0
+text = "INFO"
