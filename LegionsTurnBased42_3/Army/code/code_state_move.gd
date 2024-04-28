@@ -25,7 +25,8 @@ func armyCollision(a):
 	if a is Army:
 		get_parent().global_position -= 2*velocity
 		destination = global_position
-		var attackState = $"../stateAttack"
-		attackState.setData(a) 
-		setState(attackState)
+		if get_parent().teamNumber != a.teamNumber: 
+			var attackState = $"../stateAttack"
+			attackState.setData(a) 
+			setState(attackState)
 	pass

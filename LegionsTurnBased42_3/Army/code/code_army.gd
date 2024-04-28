@@ -5,6 +5,7 @@ class_name Army
 
 var armyRadius = 10
 var moveRadius = 100
+var teamNumber = 0
 
 func _ready():
 	$CollisionShape2D.shape.radius = armyRadius

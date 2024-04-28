@@ -35,7 +35,8 @@ func setState(s,data=null):
 ################################	
 func armyCollision(a):
 	if a is Army:
-		var defendState = $"../stateDefend" 
-		setState(defendState)
+		if get_parent().teamNumber != a.teamNumber:
+			var defendState = $"../stateDefend" 
+			setState(defendState)
 	pass
 ################################
