@@ -1,5 +1,5 @@
-# SELECTED STATE
 extends State
+# SELECTED STATE
 
 func readyMode():
 	moveAreaVisible(true)
@@ -12,6 +12,6 @@ func processMode(delta):
 		if distToMouse() <= moveRadius():	
 			setState($"../stateMove", get_global_mouse_position())
 		else:
-			setState($"../stateReady")
+			setState($"../stateIdle")
 			
 	pass

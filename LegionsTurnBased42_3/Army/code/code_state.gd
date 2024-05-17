@@ -1,12 +1,13 @@
-# STATE - CLASS
+# STATE - SUPER CLASS
 extends Node2D
 class_name State
 ###############################
 enum modes{READY_MODE, PROCESS_MODE, TRANS_MODE}
 var mode = modes.READY_MODE
+###############################
 
 func run(delta):
-	get_parent().get_node("Label").text = name + " : " + modes.keys()[mode]
+	get_parent().get_node("Label").text = str(name)[5] #+ " : " + modes.keys()[mode]
 	if mode == modes.READY_MODE:		readyMode()
 	elif mode == modes.PROCESS_MODE:	processMode(delta)
 	elif mode == modes.TRANS_MODE:		transMode()
@@ -36,7 +37,12 @@ func setState(s,data=null):
 func armyCollision(a):
 	if a is Army:
 		if get_parent().teamNumber != a.teamNumber:
-			var defendState = $"../stateDefend" 
+			var defendState = $"../stateFDefend" 
 			setState(defendState)
 	pass
 ################################
+func sendClickDetectionSignal():
+	get_parent().sendClickDetectionSignal()	
+################################
+func sendArmyIsJustDoneSignal():
+	get_parent().sendArmyIsJustDoneSignal()

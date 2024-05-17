@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://djrj3btx5j060"]
+[gd_scene load_steps=13 format=3 uid="uid://djrj3btx5j060"]
 
 [ext_resource type="Script" path="res://Army/code/code_army.gd" id="1_pwnqx"]
 [ext_resource type="Script" path="res://Army/code/SpriteArmy.gd" id="2_ct12t"]
 [ext_resource type="Script" path="res://Army/code/code_state_ready.gd" id="3_7kqs0"]
 [ext_resource type="Script" path="res://Army/code/MoveArea.gd" id="3_iilwf"]
+[ext_resource type="Script" path="res://Army/code/code_state_idle.gd" id="4_cglnt"]
 [ext_resource type="Script" path="res://Army/code/code_state_selected.gd" id="4_h6a0h"]
 [ext_resource type="Script" path="res://Army/code/code_state_move.gd" id="5_1xg3n"]
 [ext_resource type="Script" path="res://Army/code/code_state_attack.gd" id="7_1rvwi"]
 [ext_resource type="Script" path="res://Army/code/code_state_defend.gd" id="8_ajknv"]
 [ext_resource type="Script" path="res://Army/code/code_state_done.gd" id="9_2uxp2"]
+[ext_resource type="Script" path="res://Army/code/code_state_xdead.gd" id="10_abl5o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dx0d"]
 
@@ -24,6 +26,9 @@ script = ExtResource("2_ct12t")
 [node name="MoveArea" type="Sprite2D" parent="."]
 script = ExtResource("3_iilwf")
 
+[node name="stateIdle" type="Node2D" parent="."]
+script = ExtResource("4_cglnt")
+
 [node name="stateReady" type="Node2D" parent="."]
 script = ExtResource("3_7kqs0")
 
@@ -36,18 +41,23 @@ script = ExtResource("5_1xg3n")
 [node name="stateAttack" type="Node2D" parent="."]
 script = ExtResource("7_1rvwi")
 
-[node name="stateDefend" type="Node2D" parent="."]
+[node name="stateFDefend" type="Node2D" parent="."]
 script = ExtResource("8_ajknv")
 
 [node name="stateDone" type="Node2D" parent="."]
 script = ExtResource("9_2uxp2")
 
+[node name="stateXDead" type="Node2D" parent="."]
+script = ExtResource("10_abl5o")
+
 [node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -32.0
-offset_top = -23.0
-offset_right = 8.0
-scale = Vector2(0.5, 0.5)
-text = "INFO"
+modulate = Color(0, 0, 0, 1)
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 18.0
+offset_bottom = 14.0
+scale = Vector2(0.75, 0.75)
+text = "T
+"
 
 [connection signal="area_entered" from="." to="." method="_on_army_entered"]

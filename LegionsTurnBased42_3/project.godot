@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LegionsTurnBased42_3"
-run/main_scene="res://Army/test/ArmyTest.tscn"
+run/main_scene="res://HumanController/scenes/HumanControllerTest.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

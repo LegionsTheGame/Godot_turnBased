@@ -1,5 +1,5 @@
-# READY STATE
 extends State
+# READY STATE
 
 func readyMode():
 	moveAreaVisible(false)

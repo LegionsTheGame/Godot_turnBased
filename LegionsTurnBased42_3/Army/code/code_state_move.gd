@@ -1,5 +1,5 @@
-# MOVE STATE
 extends State
+# MOVE STATE---
 
 var destination : Vector2
 var velocity : Vector2 = Vector2.ZERO
