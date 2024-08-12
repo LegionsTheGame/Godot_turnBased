@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyyne4ce7forq"]
+
+[ext_resource type="Script" path="res://HumanController/code/hcontroller.gd" id="1_ve1nv"]
+[ext_resource type="Script" path="res://HumanController/code/hc_state_selected.gd" id="2_bvpgl"]
+[ext_resource type="Script" path="res://HumanController/code/hc_state_idle.gd" id="3_nfb14"]
+[ext_resource type="PackedScene" uid="uid://djrj3btx5j060" path="res://Army/scenes/scene_army.tscn" id="4_0tig6"]
+[ext_resource type="Script" path="res://HumanController/code/hc_state_done.gd" id="4_jvwtm"]
+
+[node name="HumanController" type="Node2D"]
+script = ExtResource("1_ve1nv")
+
+[node name="hc_state_selected" type="Node2D" parent="."]
+script = ExtResource("2_bvpgl")
+
+[node name="hc_state_idle" type="Node2D" parent="."]
+script = ExtResource("3_nfb14")
+
+[node name="hc_state_done" type="Node2D" parent="."]
+script = ExtResource("4_jvwtm")
+
+[node name="HumanTeam" type="Node2D" parent="."]
+
+[node name="Army1" parent="HumanTeam" instance=ExtResource("4_0tig6")]
+position = Vector2(376, 119)
+
+[node name="Army2" parent="HumanTeam" instance=ExtResource("4_0tig6")]
+position = Vector2(262, 81)
+
+[node name="Army0" parent="HumanTeam" instance=ExtResource("4_0tig6")]
+position = Vector2(317, 97)
+
+[node name="Army3" parent="HumanTeam" instance=ExtResource("4_0tig6")]
+position = Vector2(109, 25)
+
+[node name="Army4" parent="HumanTeam" instance=ExtResource("4_0tig6")]
+position = Vector2(187, 52)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 216.0
+offset_bottom = 46.0

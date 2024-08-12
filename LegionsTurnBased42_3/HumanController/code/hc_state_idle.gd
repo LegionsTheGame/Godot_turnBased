@@ -3,7 +3,9 @@ extends HC_State
 # IDLE STATE
 
 func readyMode():
-	print("human controller - IDLE STATE - ready mode")
+	#print("human controller - IDLE STATE - ready mode")
+	if get_parent().all_armies_done():
+		setState($"../hc_state_done")
 	setProcess()
 	pass
 

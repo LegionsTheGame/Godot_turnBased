@@ -20,10 +20,12 @@ func _process(delta):
 	pass
 
 func setReady(): state.setState($stateReady)
-	
+
 func setIdle(): state.setState($stateIdle)
 
 func setSelected(): state.setState($stateSelected)
+
+func isDone(): return state == $stateDone
 	
 func _on_army_entered(area):
 	state.armyCollision(area)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf2axk3apdc2p"]
+
+[ext_resource type="PackedScene" uid="uid://cyyne4ce7forq" path="res://HumanController/scenes/HumanController.tscn" id="1_1ln7d"]
+
+[node name="TestBattle" type="Node2D"]
+
+[node name="HumanController1" parent="." instance=ExtResource("1_1ln7d")]
+
+[node name="HumanController2" parent="." instance=ExtResource("1_1ln7d")]
+position = Vector2(388, 3)

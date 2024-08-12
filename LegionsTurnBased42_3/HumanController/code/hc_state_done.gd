@@ -1,6 +1,6 @@
 extends HC_State
 # human controller 
-# SELECTED STATE
+# DONE STATE
 
 var armySlected : Army
 

@@ -3,7 +3,6 @@ class_name HumanController
 
 @onready var state : HC_State = $hc_state_idle
 
-
 func _ready():
 	for a in $HumanTeam.get_children():
 		a.setIdle();
@@ -21,4 +20,11 @@ func sendClickDetectionSignalRecived(army:Army):
 
 func armyIsJustDoneSignalRecived(army:Army):
 	state.armyJustDone(army)
+	pass
+
+func all_armies_done():
+	for a in $HumanTeam.get_children():
+		if not a.isDone():
+			return false
+	return true
 	pass
