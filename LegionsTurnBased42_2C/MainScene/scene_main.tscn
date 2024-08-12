@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://2mmlku0wboia"]
+
+[ext_resource type="Script" path="res://MainScene/script_main.gd" id="1_l8e2n"]
+[ext_resource type="Script" path="res://MainScene/script_human_team.gd" id="2_0f5y4"]
+[ext_resource type="PackedScene" uid="uid://c5ogq412v2b3v" path="res://ArmyScene/scene_army.tscn" id="2_2m1ud"]
+[ext_resource type="Script" path="res://MainScene/script_computer_team.gd" id="3_4ix2j"]
+[ext_resource type="PackedScene" uid="uid://cbsgnl3hrtghq" path="res://ArcherScene/archer_scene.tscn" id="4_0ble5"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_l8e2n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ResetHumanTurn" type="Button" parent="."]
+visible = false
+offset_left = 320.0
+offset_top = -232.0
+offset_right = 544.0
+offset_bottom = -192.0
+text = "NEW HUMAN TURN
+"
+
+[node name="ResetComputerTurn" type="Button" parent="."]
+offset_left = 248.0
+offset_top = -360.0
+offset_right = 472.0
+offset_bottom = -320.0
+text = "NEW COMPUTER TURN"
+
+[node name="AutoNextTurn" type="CheckBox" parent="."]
+offset_left = 40.0
+offset_top = -360.0
+offset_right = 237.0
+offset_bottom = -320.0
+button_pressed = true
+text = "ENABLE AUTO TURN"
+
+[node name="HumanTeam" type="Node2D" parent="."]
+position = Vector2(-200, -16)
+script = ExtResource("2_0f5y4")
+
+[node name="SceneArmy" parent="HumanTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(32, 24)
+
+[node name="SceneArmy0" parent="HumanTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(32, -56)
+
+[node name="SceneArmy2" parent="HumanTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(32, 80)
+
+[node name="ArcherScene" parent="HumanTeam" instance=ExtResource("4_0ble5")]
+position = Vector2(-72, 16)
+
+[node name="ComputerTeam" type="Node2D" parent="."]
+position = Vector2(376, 0)
+script = ExtResource("3_4ix2j")
+
+[node name="SceneArmy2" parent="ComputerTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(0, 64)
+
+[node name="SceneArmy" parent="ComputerTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(0, 24)
+
+[node name="SceneArmy0" parent="ComputerTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(0, -48)
+team_number = 1
+
+[connection signal="button_down" from="ResetHumanTurn" to="HumanTeam" method="_on_reset_human_turn_button_down"]
+[connection signal="button_down" from="ResetComputerTurn" to="ComputerTeam" method="_on_reset_computer_turn_button_down"]
+[connection signal="signalHumanTurnFinished" from="HumanTeam" to="." method="_on_human_team_signal_human_turn_finished"]
+[connection signal="signalComputerTurnFinished" from="ComputerTeam" to="." method="_on_computer_team_signal_computer_turn_finished"]

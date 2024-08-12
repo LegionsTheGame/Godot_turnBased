@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbsgnl3hrtghq"]
+
+[ext_resource type="PackedScene" uid="uid://c5ogq412v2b3v" path="res://ArmyScene/scene_army.tscn" id="1_mv42p"]
+[ext_resource type="Script" path="res://ArcherScene/script_archer.gd" id="2_coyt1"]
+[ext_resource type="Texture2D" uid="uid://50svt7tmtyvt" path="res://ArcherScene/sprite_archer.png" id="2_objw6"]
+[ext_resource type="Script" path="res://ArcherScene/script_shootingarea.gd" id="3_tufxx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htxyd"]
+
+[node name="ArcherScene" instance=ExtResource("1_mv42p")]
+script = ExtResource("2_coyt1")
+
+[node name="ArmySprite" parent="." index="1"]
+texture = ExtResource("2_objw6")
+
+[node name="ShootingArea" type="Area2D" parent="MoveArea" index="0"]
+script = ExtResource("3_tufxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveArea/ShootingArea" index="0"]
+shape = SubResource("CircleShape2D_htxyd")
+
+[connection signal="area_entered" from="MoveArea/ShootingArea" to="MoveArea/ShootingArea" method="_on_area_entered"]
+[connection signal="area_exited" from="MoveArea/ShootingArea" to="MoveArea/ShootingArea" method="_on_area_exited"]

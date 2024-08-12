@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://2mmlku0wboia"]
+
+[ext_resource type="Script" path="res://MainScene/script_main.gd" id="1_l8e2n"]
+[ext_resource type="Script" path="res://MainScene/script_human_team.gd" id="2_0f5y4"]
+[ext_resource type="PackedScene" uid="uid://c5ogq412v2b3v" path="res://ArmyScene/scene_army.tscn" id="2_2m1ud"]
+[ext_resource type="Script" path="res://MainScene/script_computer_team.gd" id="3_4ix2j"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_l8e2n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="ResetHumanTurn" type="Button" parent="."]
+visible = false
+offset_left = 320.0
+offset_top = -232.0
+offset_right = 544.0
+offset_bottom = -192.0
+text = "NEW HUMAN TURN
+"
+
+[node name="ResetComputerTurn" type="Button" parent="."]
+offset_left = 248.0
+offset_top = -360.0
+offset_right = 472.0
+offset_bottom = -320.0
+text = "NEW COMPUTER TURN"
+
+[node name="AutoNextTurn" type="CheckBox" parent="."]
+offset_left = 40.0
+offset_top = -360.0
+offset_right = 237.0
+offset_bottom = -320.0
+button_pressed = true
+text = "ENABLE AUTO TURN"
+
+[node name="HumanTeam" type="Node2D" parent="."]
+script = ExtResource("2_0f5y4")
+
+[node name="HSceneArmy0" parent="HumanTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(272, -120)
+
+[node name="ComputerTeam" type="Node2D" parent="."]
+script = ExtResource("3_4ix2j")
+
+[node name="CSceneArmy0" parent="ComputerTeam" instance=ExtResource("2_2m1ud")]
+position = Vector2(152, -120)
+team_number = 1
+
+[connection signal="button_down" from="ResetHumanTurn" to="HumanTeam" method="_on_reset_human_turn_button_down"]
+[connection signal="button_down" from="ResetComputerTurn" to="ComputerTeam" method="_on_reset_computer_turn_button_down"]
+[connection signal="signalHumanTurnFinished" from="HumanTeam" to="." method="_on_human_team_signal_human_turn_finished"]
+[connection signal="signalComputerTurnFinished" from="ComputerTeam" to="." method="_on_computer_team_signal_computer_turn_finished"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://vgbmojs4l7ig"]
+
+[ext_resource type="Script" path="res://ArcherScene/script_arrow.gd" id="1_svckg"]
+[ext_resource type="Texture2D" uid="uid://coahmehcyhic2" path="res://ArcherScene/sprite_arrow.png" id="2_wy0tm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnjts"]
+
+[node name="ArrowScene" type="Area2D"]
+script = ExtResource("1_svckg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mnjts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_wy0tm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
