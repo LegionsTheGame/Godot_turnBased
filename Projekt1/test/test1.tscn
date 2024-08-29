@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfyymt2vmc2q2"]
+
+[ext_resource type="Texture2D" uid="uid://c85xghb10rt4u" path="res://test/icon.svg" id="1_amfkt"]
+[ext_resource type="Script" path="res://test/test1.gd" id="1_bkvip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7pbo"]
+size = Vector2(128, 128)
+
+[node name="Army" type="Area2D"]
+script = ExtResource("1_bkvip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_amfkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_x7pbo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

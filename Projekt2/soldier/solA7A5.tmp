@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://uu05ktevyu45"]
+
+[ext_resource type="Script" path="res://soldier/SoldierScript.gd" id="1_qmi7k"]
+[ext_resource type="PackedScene" uid="uid://d0g7e34ao4las" path="res://statemachine/statemachine.tscn" id="2_61tnk"]
+[ext_resource type="Texture2D" uid="uid://dwnxtqb4ptkg4" path="res://soldier/spritesheet.png" id="2_thdbt"]
+[ext_resource type="Script" path="res://soldier/state_idle.gd" id="4_a230u"]
+[ext_resource type="Script" path="res://soldier/state_combat.gd" id="5_rhgsl"]
+
+[sub_resource type="Animation" id="Animation_we4rb"]
+resource_name = "new_animation"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nodes/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nodes/Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.3, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xf1gg"]
+_data = {
+"new_animation": SubResource("Animation_we4rb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je1hy"]
+radius = 8.06226
+
+[node name="Soldier" type="Node2D"]
+script = ExtResource("1_qmi7k")
+
+[node name="Statemachine" parent="." instance=ExtResource("2_61tnk")]
+
+[node name="state_idle" type="Node2D" parent="Statemachine"]
+script = ExtResource("4_a230u")
+
+[node name="state_combat" type="Node2D" parent="Statemachine"]
+script = ExtResource("5_rhgsl")
+
+[node name="Nodes" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Nodes"]
+process_mode = 3
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xf1gg")
+}
+speed_scale = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Nodes"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_thdbt")
+offset = Vector2(0, 30)
+hframes = 7
+
+[node name="Area2D" type="Area2D" parent="Nodes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nodes/Area2D"]
+shape = SubResource("CircleShape2D_je1hy")
+
+[connection signal="area_entered" from="Nodes/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Nodes/Area2D" to="." method="_on_area_2d_area_exited"]

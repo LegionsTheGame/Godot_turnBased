@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1e3fbswvqkh7"]
+
+[ext_resource type="Script" path="res://tests/mouseindicator.gd" id="1_ae0b8"]
+[ext_resource type="PackedScene" uid="uid://uu05ktevyu45" path="res://soldier/soldier.tscn" id="1_k6hop"]
+
+[node name="TestSoldier" type="Node2D"]
+
+[node name="mouse_controlled" type="Node2D" parent="."]
+script = ExtResource("1_ae0b8")
+
+[node name="Soldier_mouse" parent="mouse_controlled" instance=ExtResource("1_k6hop")]
+position = Vector2(318, 72)
+dead_risk = 0.0
+
+[node name="Soldier" parent="." instance=ExtResource("1_k6hop")]
+position = Vector2(120, 143)
+king_code = 1
+dead_risk = 1.0

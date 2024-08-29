@@ -1,0 +1,246 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8njfsu6tgpok"]
+
+[ext_resource type="Script" path="res://army/ArmyScript.gd" id="1_onwwe"]
+[ext_resource type="PackedScene" uid="uid://uu05ktevyu45" path="res://army/soldier/soldier.tscn" id="2_evbdg"]
+
+[node name="Army" type="Node2D"]
+script = ExtResource("1_onwwe")
+
+[node name="Soldier10" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(55, 18)
+
+[node name="Soldier2" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 17)
+
+[node name="Soldier3" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 18)
+
+[node name="Soldier4" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 27)
+
+[node name="Soldier5" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 27)
+
+[node name="Soldier6" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 18)
+
+[node name="Soldier7" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(64, 26)
+
+[node name="Soldier8" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 18)
+
+[node name="Soldier9" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(55, 27)
+
+[node name="Soldier1" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 26)
+
+[node name="Soldier11" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(56, 0)
+
+[node name="Soldier12" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 1)
+
+[node name="Soldier13" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 1)
+
+[node name="Soldier14" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 10)
+
+[node name="Soldier15" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 9)
+
+[node name="Soldier16" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 0)
+
+[node name="Soldier17" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 9)
+
+[node name="Soldier18" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 0)
+
+[node name="Soldier19" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(56, 9)
+
+[node name="Soldier20" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 8)
+
+[node name="Soldier21" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(9, 17)
+
+[node name="Soldier22" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(0, 16)
+
+[node name="Soldier23" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(37, 17)
+
+[node name="Soldier24" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(37, 26)
+
+[node name="Soldier25" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(28, 26)
+
+[node name="Soldier26" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(28, 17)
+
+[node name="Soldier27" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(18, 25)
+
+[node name="Soldier28" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(19, 17)
+
+[node name="Soldier29" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(9, 26)
+
+[node name="Soldier30" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(0, 25)
+
+[node name="Soldier31" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(10, -1)
+
+[node name="Soldier32" parent="." instance=ExtResource("2_evbdg")]
+
+[node name="Soldier33" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(37, 0)
+
+[node name="Soldier34" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(37, 9)
+
+[node name="Soldier35" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(28, 8)
+
+[node name="Soldier36" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(28, -1)
+
+[node name="Soldier37" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(19, 8)
+
+[node name="Soldier38" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(19, -1)
+
+[node name="Soldier39" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(10, 8)
+
+[node name="Soldier40" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(0, 7)
+
+[node name="Soldier41" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(10, 52)
+
+[node name="Soldier42" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(1, 51)
+
+[node name="Soldier43" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(38, 52)
+
+[node name="Soldier44" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(38, 61)
+
+[node name="Soldier45" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(29, 61)
+
+[node name="Soldier46" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(29, 52)
+
+[node name="Soldier47" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(19, 60)
+
+[node name="Soldier48" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(20, 52)
+
+[node name="Soldier49" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(10, 61)
+
+[node name="Soldier50" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(1, 60)
+
+[node name="Soldier51" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(11, 34)
+
+[node name="Soldier52" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(1, 35)
+
+[node name="Soldier53" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(38, 35)
+
+[node name="Soldier54" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(38, 44)
+
+[node name="Soldier55" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(29, 43)
+
+[node name="Soldier56" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(29, 34)
+
+[node name="Soldier57" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(20, 43)
+
+[node name="Soldier58" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(20, 34)
+
+[node name="Soldier59" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(11, 43)
+
+[node name="Soldier60" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(1, 42)
+
+[node name="Soldier61" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(55, 53)
+
+[node name="Soldier62" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 52)
+
+[node name="Soldier63" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 53)
+
+[node name="Soldier64" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 62)
+
+[node name="Soldier65" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 62)
+
+[node name="Soldier66" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 53)
+
+[node name="Soldier67" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(64, 61)
+
+[node name="Soldier68" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 53)
+
+[node name="Soldier69" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(55, 62)
+
+[node name="Soldier70" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 61)
+
+[node name="Soldier71" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(56, 35)
+
+[node name="Soldier72" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 36)
+
+[node name="Soldier73" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 36)
+
+[node name="Soldier74" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(83, 45)
+
+[node name="Soldier75" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 44)
+
+[node name="Soldier76" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(74, 35)
+
+[node name="Soldier77" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 44)
+
+[node name="Soldier78" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(65, 35)
+
+[node name="Soldier79" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(56, 44)
+
+[node name="Soldier80" parent="." instance=ExtResource("2_evbdg")]
+position = Vector2(46, 43)

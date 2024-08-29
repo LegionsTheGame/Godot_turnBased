@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://0h2r0bq76bck"]
+
+[ext_resource type="Script" path="res://test/TestSoldierMovement.gd" id="1_7krkk"]
+[ext_resource type="PackedScene" uid="uid://uu05ktevyu45" path="res://army/soldier/soldier.tscn" id="1_nrvlf"]
+
+[node name="TestSoldierMovement" type="Node2D"]
+script = ExtResource("1_7krkk")
+
+[node name="Soldier" parent="." instance=ExtResource("1_nrvlf")]
+position = Vector2(100, 100)
