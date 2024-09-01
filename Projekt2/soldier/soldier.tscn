@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://uu05ktevyu45"]
+[gd_scene load_steps=12 format=3 uid="uid://uu05ktevyu45"]
 
 [ext_resource type="Script" path="res://soldier/SoldierScript.gd" id="1_qmi7k"]
 [ext_resource type="PackedScene" uid="uid://d0g7e34ao4las" path="res://statemachine/TheStateMachine.tscn" id="2_qu2e0"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://soldier/states/state_march.gd" id="6_pfa6q"]
 
 [sub_resource type="Animation" id="Animation_we4rb"]
-resource_name = "new_animation"
+resource_name = "dead_animation"
 length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -36,9 +36,26 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_a1m5n"]
+resource_name = "combat_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nodes/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.4, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-9, 0), Vector2(-1.90735e-06, -6), Vector2(6, 1), Vector2(-1, 6), Vector2(-4, 2), Vector2(-3, -4), Vector2(1, 0), Vector2(3, 4), Vector2(-2, 4), Vector2(-1.19209e-07, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xf1gg"]
 _data = {
-"new_animation": SubResource("Animation_we4rb")
+"combat_animation": SubResource("Animation_a1m5n"),
+"dead_animation": SubResource("Animation_we4rb")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_je1hy"]
@@ -72,6 +89,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Nodes"]
+position = Vector2(-1.19209e-07, 0)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_thdbt")
 offset = Vector2(0, 30)

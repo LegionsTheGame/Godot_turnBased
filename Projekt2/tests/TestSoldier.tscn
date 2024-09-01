@@ -15,4 +15,4 @@ dead_risk = 0.0
 [node name="Soldier" parent="." instance=ExtResource("1_k6hop")]
 position = Vector2(120, 143)
 king_code = 1
-dead_risk = 1.0
+dead_risk = 0.2
