@@ -59,9 +59,9 @@ func _walk_in_direction(direction):
 		var velocity = direction.limit_length(1);#RandomNumberGenerator.new().randf_range(0.5, 1))
 
 		if step_left:
-			velocity = velocity.rotated(PI/(8))
+			velocity = velocity.rotated(PI/(9))
 		else:
-			velocity = velocity.rotated(-PI/(8))
+			velocity = velocity.rotated(-PI/(9))
 		step_time = step_time - 1
 		if step_time <= 0:
 			step_time = step_time_limit

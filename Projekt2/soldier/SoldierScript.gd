@@ -12,11 +12,12 @@ var stepLeft			= false
 var dead 				= false
 
 func _ready():
+	print("soldier ready")
 ## Connected to Signal:"change_state" from the state-machine
 	$Statemachine.change_of_state.connect(soldier_state_change)
 	$Statemachine._state_machine_init()
-	start_position	= position
-	army_position	= global_position
+	#start_position	= position
+	#army_position	= global_position
 	if debug_on:
 		$Nodes/Label_debug.visible = true
 	pass
