@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdg4xkywiwia2"]
+
+[ext_resource type="Script" path="res://tests/army_test1/ArmyTest1.gd" id="1_053ks"]
+[ext_resource type="PackedScene" uid="uid://ci55h1wgdxvkn" path="res://army/army.tscn" id="1_335af"]
+[ext_resource type="PackedScene" uid="uid://uu05ktevyu45" path="res://soldier/soldier.tscn" id="1_cwo68"]
+
+[node name="ArmyTest1" type="Node2D"]
+script = ExtResource("1_053ks")
+
+[node name="Soldier" parent="." instance=ExtResource("1_cwo68")]
+position = Vector2(446, 180)
+debug_on = true
+
+[node name="Army0" parent="." instance=ExtResource("1_335af")]
+position = Vector2(369, 299)
+
+[node name="Army1" parent="." instance=ExtResource("1_335af")]
+position = Vector2(531, 299)
+king_code = 1
+controllable = true
+
+[node name="Army2" parent="." instance=ExtResource("1_335af")]
+position = Vector2(710, 294)
+king_code = 2

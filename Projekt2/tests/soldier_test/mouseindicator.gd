@@ -11,6 +11,7 @@ func _draw():
 func _process(delta):
 	#global_position =get_global_mouse_position()
 	if Input.is_action_just_pressed("mouse_left"):
-		$Soldier_mouse._march_to_destination(get_global_mouse_position())
+		for s in get_children():
+			s._march_to_destination(get_global_mouse_position())
 		pass
 	pass

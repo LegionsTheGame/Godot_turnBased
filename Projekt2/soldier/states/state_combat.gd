@@ -46,11 +46,11 @@ func _new_data(code,data):
 	pass	
 	
 func generatePercentDeadChance(percent):
-	# dette er en random-død < 1% generator - for at teste den visuelle effekt
+	# dette er en random-død < percent % generator - for at teste den visuelle effekt
 	if not soldier_node.dead:
 		#if not animation_node.is_playing():
 			var r = RandomNumberGenerator.new().randf_range(0, 1)
-			if r*100 < percent:
+			if r*100 < percent*enemies.size():
 				animation_node.play("dead_animation")
 				soldier_node.dead = true
 pass	
