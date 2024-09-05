@@ -1,18 +1,20 @@
 extends Node2D
 
+#
+signal dead_signal(soldier)
+
 # egenskaber for soldaten
 @export var king_code 	= 0
 @export var dead_risk	= 0.1
 @export var debug_on	= false
 
-var army_position:Vector2 = Vector2.ZERO	
+var army_position:Vector2 		#"Global position" i hæren	
+var start_position1:Vector2 	#"Lokal position" i hæren
 
-var start_position:Vector2 # Sættes i _ready : soldatens position i "hæren"/"army"
 var stepLeft			= false
-var dead 				= false
+var killed 				= false : get = get_dead, set = set_dead
 
 func _ready():
-	print("soldier ready")
 ## Connected to Signal:"change_state" from the state-machine
 	$Statemachine.change_of_state.connect(soldier_state_change)
 	$Statemachine._state_machine_init()
@@ -21,9 +23,8 @@ func _ready():
 	if debug_on:
 		$Nodes/Label_debug.visible = true
 	pass
-	
+pass
 
-	
 func _process(delta):
 	$Statemachine._state_machine_run(delta)
 	pass
@@ -43,7 +44,7 @@ func soldier_state_change(new_state):
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent().get_parent()
 		
-	if not other.dead and king_code != other.king_code:
+	if not other.get_dead() and king_code != other.king_code:
 		$Statemachine._new_data("add_enemy",other)
 		pass
 	pass
@@ -56,3 +57,11 @@ func _on_area_2d_area_exited(area):
 		$Statemachine._new_data("delete_enemy",other)
 		pass	
 	pass
+
+func set_dead(value):
+	killed = value
+	## SEND DEAD-SIGNAL
+	emit_signal("dead_signal",self)
+	
+func get_dead():
+	return killed

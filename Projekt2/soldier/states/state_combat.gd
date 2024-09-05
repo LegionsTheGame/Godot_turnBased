@@ -24,9 +24,9 @@ func _ready():
 
 func _stat_run():
 	for s in enemies:
-		if s.dead: enemies.erase(s)		
+		if s.get_dead(): enemies.erase(s)		
 		
-	if soldier_node.dead:
+	if soldier_node.get_dead():
 		state_machine._change_state(state_dead)
 	elif enemies.size() > 0:
 		generatePercentDeadChance(soldier_node.dead_risk)		
@@ -47,10 +47,10 @@ func _new_data(code,data):
 	
 func generatePercentDeadChance(percent):
 	# dette er en random-død < percent % generator - for at teste den visuelle effekt
-	if not soldier_node.dead:
+	if not soldier_node.get_dead():
 		#if not animation_node.is_playing():
 			var r = RandomNumberGenerator.new().randf_range(0, 1)
 			if r*100 < percent*enemies.size():
 				animation_node.play("dead_animation")
-				soldier_node.dead = true
+				soldier_node.set_dead(true)
 pass	
