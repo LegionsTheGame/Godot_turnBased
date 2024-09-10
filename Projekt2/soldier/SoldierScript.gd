@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Soldier
 #
 signal dead_signal(soldier)
 
@@ -7,6 +7,8 @@ signal dead_signal(soldier)
 @export var king_code 	= 0
 @export var dead_risk	= 0.1
 @export var debug_on	= false
+
+@export var leader		= false
 
 var army_position:Vector2 		#"Global position" i hæren	
 var start_position1:Vector2 	#"Lokal position" i hæren
@@ -21,7 +23,7 @@ func _ready():
 	#start_position	= position
 	#army_position	= global_position
 	if debug_on:
-		$Nodes/Label_debug.visible = true
+		$Label_debug.visible = true
 	pass
 pass
 
@@ -37,7 +39,7 @@ func _march_to_destination(dest):
 
 ## Connected to Signal:"change_state" from the state-machine
 func soldier_state_change(new_state):
-	$Nodes/Label_debug.set_text(new_state.name)
+	$Label_debug.set_text(new_state.name)
 	pass
 	
 
@@ -65,3 +67,8 @@ func set_dead(value):
 	
 func get_dead():
 	return killed
+
+func on_army_position():
+	var d : Vector2 = global_position - army_position
+	return d.length() < 2 # soldaten har nået sin position...	
+	pass

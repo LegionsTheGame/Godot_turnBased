@@ -1,128 +1,154 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci55h1wgdxvkn"]
+[gd_scene load_steps=9 format=3 uid="uid://ci55h1wgdxvkn"]
 
 [ext_resource type="PackedScene" uid="uid://uu05ktevyu45" path="res://soldier/soldier.tscn" id="1_3lh5m"]
 [ext_resource type="Script" path="res://army/army.gd" id="1_amgrv"]
+[ext_resource type="PackedScene" uid="uid://d0g7e34ao4las" path="res://statemachine/TheStateMachine.tscn" id="2_yimnu"]
+[ext_resource type="Script" path="res://army/states/army_idle_state.gd" id="3_3th0q"]
+[ext_resource type="Script" path="res://army/states/army__selected_state.gd" id="5_6thi6"]
+[ext_resource type="Script" path="res://army/selected_sprite.gd" id="5_agd25"]
+[ext_resource type="Script" path="res://army/army_turn_state.gd" id="6_ngflp"]
+[ext_resource type="Script" path="res://army/states/army_march_state.gd" id="6_uxtjk"]
 
 [node name="Army" type="Node2D"]
 position = Vector2(1, -1)
 script = ExtResource("1_amgrv")
 
-[node name="Soldier" parent="." instance=ExtResource("1_3lh5m")]
+[node name="selected_sprite" type="Sprite2D" parent="."]
+visible = false
+script = ExtResource("5_agd25")
+
+[node name="Statemachine" parent="." instance=ExtResource("2_yimnu")]
+
+[node name="state_idle" type="Node2D" parent="Statemachine"]
+script = ExtResource("3_3th0q")
+
+[node name="state_selected" type="Node2D" parent="Statemachine"]
+script = ExtResource("5_6thi6")
+
+[node name="state_turn" type="Node2D" parent="Statemachine"]
+script = ExtResource("6_ngflp")
+
+[node name="state_march" type="Node2D" parent="Statemachine"]
+script = ExtResource("6_uxtjk")
+
+[node name="all_soldiers" type="Node2D" parent="."]
+
+[node name="Soldier" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-34, -22)
 
-[node name="Soldier2" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier2" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-34, -8)
 
-[node name="Soldier3" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier3" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-35, 2)
 
-[node name="Soldier4" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier4" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-34, 12)
 
-[node name="Soldier5" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier5" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-32, 25)
 
-[node name="Soldier6" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier6" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-25, -23)
 
-[node name="Soldier7" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier7" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-25, -9)
 
-[node name="Soldier8" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier8" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-26, 1)
 
-[node name="Soldier9" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier9" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-25, 11)
 
-[node name="Soldier10" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier10" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-23, 24)
 
-[node name="Soldier11" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier11" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-16, -22)
 
-[node name="Soldier12" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier12" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-16, -8)
 
-[node name="Soldier13" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier13" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-17, 2)
 
-[node name="Soldier14" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier14" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-16, 12)
 
-[node name="Soldier15" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier15" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-14, 25)
 
-[node name="Soldier16" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier16" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-7, -25)
 
-[node name="Soldier17" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier17" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-7, -11)
 
-[node name="Soldier18" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier18" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-8, -1)
 
-[node name="Soldier19" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier19" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-7, 9)
 
-[node name="Soldier20" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier20" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(-5, 22)
 
-[node name="Soldier21" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier21" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(3, -25)
 
-[node name="Soldier22" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier22" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(3, -11)
 
-[node name="Soldier23" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier23" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(2, -1)
 
-[node name="Soldier24" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier24" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(3, 9)
 
-[node name="Soldier25" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier25" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(5, 22)
 
-[node name="Soldier26" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier26" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(13, -22)
 
-[node name="Soldier27" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier27" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(13, -8)
 
-[node name="Soldier28" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier28" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(12, 2)
 
-[node name="Soldier29" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier29" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(13, 12)
 
-[node name="Soldier30" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier30" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(15, 25)
 
-[node name="Soldier31" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier31" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(24, -25)
 
-[node name="Soldier32" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier32" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(24, -11)
 
-[node name="Soldier33" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier33" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(23, -1)
 
-[node name="Soldier34" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier34" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(24, 9)
 
-[node name="Soldier35" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier35" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(26, 22)
 
-[node name="Soldier36" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier36" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(37, -22)
 
-[node name="Soldier37" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier37" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(37, -8)
 
-[node name="Soldier38" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier38" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(36, 2)
 
-[node name="Soldier39" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier39" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(37, 12)
 
-[node name="Soldier40" parent="." instance=ExtResource("1_3lh5m")]
+[node name="Soldier40" parent="all_soldiers" instance=ExtResource("1_3lh5m")]
 position = Vector2(39, 25)

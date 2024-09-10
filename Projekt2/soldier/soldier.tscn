@@ -65,6 +65,12 @@ radius = 8.06226
 [node name="Soldier" type="Node2D"]
 script = ExtResource("1_qmi7k")
 
+[node name="Label_debug" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "State"
+
 [node name="Statemachine" parent="." instance=ExtResource("2_qu2e0")]
 
 [node name="state_idle" type="Node2D" parent="Statemachine"]
@@ -101,12 +107,6 @@ script = ExtResource("8_eb6lf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nodes/Area2D"]
 shape = SubResource("CircleShape2D_je1hy")
-
-[node name="Label_debug" type="Label" parent="Nodes"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "State"
 
 [connection signal="area_entered" from="Nodes/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Nodes/Area2D" to="." method="_on_area_2d_area_exited"]

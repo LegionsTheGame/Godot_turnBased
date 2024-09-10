@@ -9,10 +9,10 @@ script = ExtResource("1_053ks")
 
 [node name="Soldier" parent="." instance=ExtResource("1_cwo68")]
 position = Vector2(446, 180)
-debug_on = true
 
 [node name="Army0" parent="." instance=ExtResource("1_335af")]
 position = Vector2(369, 299)
+controllable = true
 
 [node name="Army1" parent="." instance=ExtResource("1_335af")]
 position = Vector2(531, 299)
@@ -22,3 +22,4 @@ controllable = true
 [node name="Army2" parent="." instance=ExtResource("1_335af")]
 position = Vector2(710, 294)
 king_code = 2
+controllable = true
