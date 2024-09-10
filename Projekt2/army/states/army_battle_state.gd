@@ -1,13 +1,12 @@
 # Army
 #############
-# idle state 
+# battle state 
 #############
 extends state
 
 var army_node
 var selected_sprite
 var state_selected
-var state_battle
 var state_machine
 
 func _ready():
@@ -15,7 +14,6 @@ func _ready():
 	selected_sprite	= $"../../selected_sprite"
 	state_machine	= $".."
 	state_selected	= $"../state_selected"
-	state_battle	= $"../state_battle"
 	pass
 
 func _state_init(code,data):
@@ -34,10 +32,6 @@ func _stat_run():
 	pass
 	
 func _new_data(code,data):
-	if code == "fighting":
-		state_machine._change_state_data("fighting",null,state_battle)
-		pass
-		
 	if code == "un_selected":
 		selected_sprite.visible = false
 	pass

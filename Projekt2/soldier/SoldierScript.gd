@@ -2,6 +2,7 @@ extends Node2D
 class_name Soldier
 #
 signal dead_signal(soldier)
+signal fighting_signal(soldier)
 
 # egenskaber for soldaten
 @export var king_code 	= 0
@@ -48,6 +49,8 @@ func _on_area_2d_area_entered(area):
 		
 	if not other.get_dead() and king_code != other.king_code:
 		$Statemachine._new_data("add_enemy",other)
+		# har mødt en fjende - sender "fighting" signalet
+		emit_signal("fighting_signal",self)
 		pass
 	pass
 

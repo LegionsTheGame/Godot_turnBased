@@ -14,10 +14,12 @@ var heading : float
 var soldiers = []
 
 
-### 
+### initialization and control of statemachine
 
 func _ready():
+	_army_init()
 	$Statemachine._state_machine_init()
+	$Statemachine.change_of_state.connect(soldier_state_change)
 	pass
 	
 func _process(delta):
@@ -25,13 +27,25 @@ func _process(delta):
 	pass
 
 
-#### army functions
+## Connected to Signal:"change_state" from the state-machine
+func soldier_state_change(new_state):
+	$Label_debug.set_text(new_state.name)
+	$Label_debug.global_position = destination
+	pass
+
+func soldier_is_fighting_recived(soldier):
+	#print("A soldier is fighting", soldier)
+	$Statemachine._new_data("fighting",soldier)
+	pass
+
 
 func _army_init():
 	var stepValue = true;
 	for s in $all_soldiers.get_children():
 		##Connect to soldier - dead signal
 		s.dead_signal.connect(soldier_is_dead_recived)		
+		##Connect to soldier - fighting signal
+		s.fighting_signal.connect(soldier_is_fighting_recived)		
 		##Soldiers king code - given from army
 		s.king_code = king_code
 		##Soldiers - use different feets when marching...
@@ -48,8 +62,10 @@ func _army_init():
 		
 	pass
 
+#### army functions - used by the state-machine
+
 func soldier_is_dead_recived(soldier):
-	print("A soldier is dead", soldier)	
+	#print("A soldier is dead", soldier)	
 	soldiers.erase(soldier)
 	
 	square_formation(destination)
@@ -57,6 +73,7 @@ func soldier_is_dead_recived(soldier):
 		leader = soldiers[0]
 pass
 
+	
 func square_formation(dest):
 	var ssize	= soldiers.size()
 	var kv		= int(sqrt(ssize))
