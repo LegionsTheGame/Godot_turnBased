@@ -27,10 +27,11 @@ func _stat_run():
 	if not army_node.controllable: return
 	
 	if Input.is_action_just_pressed("mouse_left"):
-		var dist = get_global_mouse_position() - army_node.global_position
+		var dist = get_global_mouse_position() - army_node.destination
 		if dist.length() < army_node.selection_radius:
 			#print("army valgt")
 			state_machine._change_state_data("un_selected",null,state_idle)
+			print("du trykkede på hæren igen .. så den er un-selected")
 		else:
 			# Destination selected
 			state_machine._change_state_data("turn",get_global_mouse_position(),state_turn)
@@ -39,7 +40,7 @@ func _stat_run():
 	
 func _new_data(code,data):
 	if code == "fighting":
-		state_machine._change_state_data("fighting",null,state_battle)
+		state_machine._change_state_data("fighting",data,state_battle)
 		pass
 		
 	if code == "selected":

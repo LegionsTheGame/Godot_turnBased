@@ -17,9 +17,7 @@ controllable = true
 [node name="Army1" parent="." instance=ExtResource("1_335af")]
 position = Vector2(531, 299)
 king_code = 1
-controllable = true
 
 [node name="Army2" parent="." instance=ExtResource("1_335af")]
 position = Vector2(710, 294)
 king_code = 2
-controllable = true

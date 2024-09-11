@@ -9,6 +9,8 @@ var selected_sprite
 var state_selected
 var state_machine
 
+var first_fighter # den første soldat i krig
+
 func _ready():
 	army_node 		= $"../.."
 	selected_sprite	= $"../../selected_sprite"
@@ -17,6 +19,7 @@ func _ready():
 	pass
 
 func _state_init(code,data):
+	first_fighter = null
 	_new_data(code,data)
 	pass
 	
@@ -32,6 +35,8 @@ func _stat_run():
 	pass
 	
 func _new_data(code,data):
-	if code == "un_selected":
+	if code == "fighting" and first_fighter == null:
 		selected_sprite.visible = false
+		first_fighter = data
+		print("fighting...",data)
 	pass

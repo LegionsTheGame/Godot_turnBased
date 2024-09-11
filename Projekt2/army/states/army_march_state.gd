@@ -26,9 +26,6 @@ func _state_init(code,data):
 	pass
 	
 func _stat_run():
-	#for s in army_node.soldiers:
-	#	if s.leader and army_node.controllable:
-	#		if s.get_node("Statemachine").current_state.name == "state_idle":
 	if army_node.soldiers.size() > 0 && army_node.soldiers[0].on_army_position():
 		state_machine._change_state_data("un_selected",null,state_idle)
 		pass
@@ -36,7 +33,7 @@ func _stat_run():
 	
 func _new_data(code,data):
 	if code == "fighting":
-		state_machine._change_state_data("fighting",null,state_battle)
+		state_machine._change_state_data("fighting",data,state_battle)
 		pass
 	
 	if code == "march":

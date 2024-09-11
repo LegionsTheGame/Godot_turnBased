@@ -35,7 +35,7 @@ func _stat_run():
 	
 func _new_data(code,data):
 	if code == "fighting":
-		state_machine._change_state_data("fighting",null,state_battle)
+		state_machine._change_state_data("fighting",data,state_battle)
 		pass
 		
 	if code == "un_selected":

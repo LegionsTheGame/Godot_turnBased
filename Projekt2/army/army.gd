@@ -80,10 +80,10 @@ func square_formation(dest):
 	var nr 		= 0
 	#destination = global_position
 	while nr < ssize:
-		var col = nr%kv - kv/2
-		var row = nr/kv -kv/2
-		var x =  col*9
-		var y = row*9
+		var col = nr%kv - (kv)/2
+		var row = nr/kv -(kv)/2
+		var x =  col*9 
+		var y = row*9 -5
 		var s = soldiers[nr]
 		
 		#s.position = Vector2(x,y)
@@ -101,17 +101,19 @@ func rotate_formation(angle):
 		s.start_position1 = s.start_position1.rotated(add_angle) 
 		s.army_position =  destination + s.start_position1
 		pass
-	heading = angle
+	heading = angle #dette bliver allerede sat af "turn state"
 	pass
 
 func move_formation(dest):
 	for s in soldiers:
-		#s.start_position1 = s.start_position1.rotated(he) 
 		s.army_position =  dest + s.start_position1
 		pass
-	destination = dest
+	destination = dest #dette bliver allerede sat af "turn state"
 	pass
 	
+func stop_formation():
+	print("STOP FORMATION...")
+	pass
 
 ################
 
