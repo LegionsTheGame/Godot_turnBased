@@ -8,6 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("d"):
-		$Soldier._march_to_destination(get_global_mouse_position())
+	#$Soldier.global_position = get_global_mouse_position() + Vector2(0,40)
 	pass

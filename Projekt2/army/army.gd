@@ -7,6 +7,7 @@ var selection_radius = 80
 
 @export var king_code 		= 0
 @export var controllable 	= false
+@export var debug_mode		= false
 
 var destination : Vector2
 var heading : float
@@ -29,8 +30,9 @@ func _process(delta):
 
 ## Connected to Signal:"change_state" from the state-machine
 func soldier_state_change(new_state):
-	$Label_debug.set_text(new_state.name)
-	$Label_debug.global_position = destination
+	if debug_mode:
+		$Label_debug.set_text(new_state.name)
+		$Label_debug.global_position = destination + Vector2.UP*80
 	pass
 
 func soldier_is_fighting_recived(soldier):
@@ -68,9 +70,10 @@ func soldier_is_dead_recived(soldier):
 	#print("A soldier is dead", soldier)	
 	soldiers.erase(soldier)
 	
-	square_formation(destination)
+	#square_formation(destination)
 	if soldiers.size() > 0:
 		leader = soldiers[0]
+		$Statemachine._new_data("dead_soldier",soldier)
 pass
 
 	
@@ -88,10 +91,11 @@ func square_formation(dest):
 		
 		#s.position = Vector2(x,y)
 		
-		s.start_position1 = Vector2(x,y)# s.position # positionen i hærens opstilling
+		s.start_position1 = Vector2(x,y).rotated(heading)# s.position # positionen i hærens opstilling
 		s.army_position =  dest + s.start_position1
 		nr = nr +1
 		pass
+	destination = dest 
 	pass
 
 func rotate_formation(angle):
@@ -101,18 +105,24 @@ func rotate_formation(angle):
 		s.start_position1 = s.start_position1.rotated(add_angle) 
 		s.army_position =  destination + s.start_position1
 		pass
-	heading = angle #dette bliver allerede sat af "turn state"
+	heading = angle 
 	pass
 
 func move_formation(dest):
 	for s in soldiers:
 		s.army_position =  dest + s.start_position1
 		pass
-	destination = dest #dette bliver allerede sat af "turn state"
+	destination = dest 
 	pass
 	
-func stop_formation():
-	print("STOP FORMATION...")
+func stop_soldiers():
+	print("STOP all soldiers...")
+	if soldiers.size() > 0:
+		for s in soldiers:
+			s.start_position1 = s.position
+			s.army_position = s.global_position
+			s.stop_march()
+	
 	pass
 
 ################

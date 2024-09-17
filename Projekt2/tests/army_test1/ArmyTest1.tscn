@@ -8,11 +8,12 @@
 script = ExtResource("1_053ks")
 
 [node name="Soldier" parent="." instance=ExtResource("1_cwo68")]
-position = Vector2(446, 180)
+dead_risk = 0.0
 
 [node name="Army0" parent="." instance=ExtResource("1_335af")]
 position = Vector2(369, 299)
 controllable = true
+debug_mode = true
 
 [node name="Army1" parent="." instance=ExtResource("1_335af")]
 position = Vector2(531, 299)

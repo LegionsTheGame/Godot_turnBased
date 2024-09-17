@@ -71,6 +71,9 @@ func set_dead(value):
 func get_dead():
 	return killed
 
+func stop_march():
+	$Statemachine._new_data("stop_march",army_position)	
+
 func on_army_position():
 	var d : Vector2 = global_position - army_position
 	return d.length() < 2 # soldaten har nået sin position...	

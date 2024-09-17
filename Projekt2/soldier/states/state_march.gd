@@ -72,7 +72,14 @@ func _walk_in_direction(direction):
 
 func _new_data(code,data):
 	if code == "add_enemy" and enemy == null:
+		# data er enemy
 		destination = data.global_position
 		enemy = data
 		pass
+	
+	if code == "stop_march":
+		# VI STOPPER BEVÆGELSEN
+		destination = soldier_node.global_position
+		pass
+	
 	pass
