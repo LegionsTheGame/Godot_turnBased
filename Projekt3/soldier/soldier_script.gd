@@ -12,7 +12,7 @@ var destination : Vector2
 var local_army_position : Vector2
 
 # Fjende som soldaten kæmper imod - hver soldat kan kun slås med en anden soldat - dette er denne fjende
-var enemy : Soldier
+var enemy : Area2D
 # Team nummer - det team som soldaten er på, så man kan kende forskel på fjender og venner
 @export var team_code : int 
 
@@ -23,6 +23,7 @@ func _ready():
 	stateMachine 	= $StateMachineScene
 	stateMachine.change_of_state.connect(soldier_state_change)
 	stateMachine._set_state("",null,$StateMachineScene/standby_state)
+	$Area2D.team_code = team_code
 	pass
 
 func _process(delta):
@@ -41,13 +42,16 @@ func soldier_state_change(new_state):
 
 
 func _on_area_2d_area_entered(area):
-	stateMachine._new_data("start_combat",area)
-	#print("area2d entered")
+	#print("area entered",area.team_code, team_code)
+	if area.team_code != team_code:
+		stateMachine._new_data("start_combat",area)
+		#print("area2d entered")
 	pass
 
 func _on_area_2d_area_exited(area):
-	stateMachine._new_data("stop_combat",area)
-	#print("araea2d exited")
+	if area.team_code != team_code:
+		stateMachine._new_data("stop_combat",area)
+		#print("araea2d exited")
 	pass
 	
 	

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bly7u8aetmdl5"]
+
+[ext_resource type="Script" path="res://army/army_script.gd" id="1_886ot"]
+[ext_resource type="PackedScene" uid="uid://bfxip86a64j0r" path="res://soldier/SoldierScene.tscn" id="2_kn4rf"]
+
+[node name="ArmyScene" type="Node2D"]
+script = ExtResource("1_886ot")
+
+[node name="SoldierScene3" parent="." instance=ExtResource("2_kn4rf")]
+position = Vector2(-10, 6)
+
+[node name="SoldierScene4" parent="." instance=ExtResource("2_kn4rf")]
+position = Vector2(9, 5)

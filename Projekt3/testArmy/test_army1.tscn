@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dksweued7htee"]
+
+[ext_resource type="Script" path="res://testArmy/test_army1_script.gd" id="1_eo5ja"]
+[ext_resource type="PackedScene" uid="uid://bly7u8aetmdl5" path="res://army/ArmyScene.tscn" id="1_i060b"]
+
+[node name="TestArmy" type="Node2D"]
+script = ExtResource("1_eo5ja")
+
+[node name="ArmyScene2" parent="." instance=ExtResource("1_i060b")]
+
+[node name="ArmyScene" parent="." instance=ExtResource("1_i060b")]
+position = Vector2(46, 37)
+team_code = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]

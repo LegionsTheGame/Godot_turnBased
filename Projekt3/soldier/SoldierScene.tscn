@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfxip86a64j0r"]
+[gd_scene load_steps=13 format=3 uid="uid://bfxip86a64j0r"]
 
 [ext_resource type="Script" path="res://soldier/soldier_script.gd" id="1_113hc"]
 [ext_resource type="Texture2D" uid="uid://bdx8giruj4a0l" path="res://soldier/spritesheetsoldier_5procent.png" id="1_ihpdq"]
+[ext_resource type="Script" path="res://soldier/soldier_area_script.gd" id="2_nb262"]
 [ext_resource type="Script" path="res://soldier/soldier_sprite_script.gd" id="3_2pt5g"]
 [ext_resource type="PackedScene" uid="uid://dk0rrtbr1gc14" path="res://state_machine/StateMachineScene.tscn" id="4_qfjtb"]
 [ext_resource type="Script" path="res://soldier/states/standby_state.gd" id="5_lvddh"]
@@ -53,11 +54,11 @@ _data = {
 script = ExtResource("1_113hc")
 
 [node name="label_debug_state" type="Label" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_nb262")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7l8i4")
