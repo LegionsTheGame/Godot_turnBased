@@ -53,7 +53,6 @@ _data = {
 script = ExtResource("1_113hc")
 
 [node name="label_debug_state" type="Label" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
