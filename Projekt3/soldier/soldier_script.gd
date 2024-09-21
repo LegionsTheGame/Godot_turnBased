@@ -35,6 +35,9 @@ func _march_to(destination):
 	stateMachine._new_data("march",destination)
 	pass
 
+func _kill():
+	stateMachine._new_data("dead",null)
+
 ## Connected to Signal:"change_state" from the state-machine
 func soldier_state_change(new_state):
 	$label_debug_state.set_text(new_state.name)

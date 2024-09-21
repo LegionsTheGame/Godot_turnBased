@@ -7,6 +7,7 @@
 script = ExtResource("1_eo5ja")
 
 [node name="ArmyScene2" parent="." instance=ExtResource("1_i060b")]
+position = Vector2(417, 152)
 
 [node name="ArmyScene" parent="." instance=ExtResource("1_i060b")]
 position = Vector2(46, 37)

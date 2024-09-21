@@ -25,4 +25,7 @@ func _data(code,data):
 	
 	if code == "start_combat":
 		stateMachine._set_state("start_combat",data,combatState)
+	
+	if code == "dead":
+		stateMachine._set_state("dead",null,deadState)
 	pass

@@ -10,7 +10,6 @@ func _process(delta):
 
 
 func _draw():
-	#print("draw the color of the soldier")
 	if get_parent().get_parent().team_code == 0:	
 		draw_circle(Vector2.ZERO,5,Color.AQUA)
 	if get_parent().get_parent().team_code != 0:

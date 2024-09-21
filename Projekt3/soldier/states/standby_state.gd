@@ -5,22 +5,26 @@
 extends Super_state
 class_name soldier_standby_state
 
-var stateMachine;
-var marchState;
-var combatState;
-var soldierNode;
 var grafikNode;
 var animationNode;
+var soldierNode;
+var stateMachine;
 var standbyState;
+var marchState;
+var combatState;
+var deadState;
 
 func _ready():
-	stateMachine	= $".."
-	marchState		= $"../march_state"
-	combatState		= $"../combat_state"
+	
 	grafikNode		= $"../../Graphics"
 	animationNode	= $"../../Graphics/AnimationPlayer"
 	soldierNode		= $"../.."
+	
+	stateMachine	= $".."
+	marchState		= $"../march_state"
 	standbyState	= $"../standby_state" # denne reference er for de andre scripts ... lidt underligt
+	combatState		= $"../combat_state"
+	deadState		= $"../dead_state"
 	pass
 
 ###############################################################################
@@ -37,4 +41,7 @@ func _data(code,data):
 
 	if code == "start_combat":
 		stateMachine._set_state("start_combat",data,combatState)
+	
+	if code == "dead":
+		stateMachine._set_state("dead",null,deadState)
 	pass

@@ -9,8 +9,8 @@ script = ExtResource("1_skqk7")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="SoldierScene" parent="." instance=ExtResource("1_5207j")]
-position = Vector2(-246, -109)
+position = Vector2(136, 86)
 
 [node name="SoldierScene2" parent="." instance=ExtResource("1_5207j")]
-position = Vector2(-53, -113)
+position = Vector2(413, 211)
 team_code = 1

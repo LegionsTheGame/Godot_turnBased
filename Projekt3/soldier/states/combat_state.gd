@@ -18,7 +18,11 @@ func _run():
 		animationNode.play("attack")
 		#Efter slutningen af hver animation regnes det ud,- hvem der dør...
 		if animationNode.current_animation_position > animationNode.current_animation_length-0.01:
-			#print("attack animation ending...")
+			var r = RandomNumberGenerator.new().randf_range(0,100)
+			if r < 40:
+				soldierNode.enemy.get_parent()._kill()
+				soldierNode.enemy = null
+				stateMachine._set_state("",null,standbyState)
 			pass
 	pass
 
@@ -37,4 +41,7 @@ func _data(code,data):
 			
 	if code == "march":
 		stateMachine._set_state("march",data,marchState)
+	
+	if code == "dead":
+		stateMachine._set_state("dead",null,deadState)
 	pass

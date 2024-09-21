@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfxip86a64j0r"]
+[gd_scene load_steps=14 format=3 uid="uid://bfxip86a64j0r"]
 
 [ext_resource type="Script" path="res://soldier/soldier_script.gd" id="1_113hc"]
 [ext_resource type="Texture2D" uid="uid://bdx8giruj4a0l" path="res://soldier/spritesheetsoldier_5procent.png" id="1_ihpdq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://soldier/states/standby_state.gd" id="5_lvddh"]
 [ext_resource type="Script" path="res://soldier/states/march_state.gd" id="6_5uqsk"]
 [ext_resource type="Script" path="res://soldier/states/combat_state.gd" id="7_nv40h"]
+[ext_resource type="Script" path="res://soldier/states/dead_state.gd" id="9_qn58n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7l8i4"]
 
@@ -30,7 +31,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_nsp6j"]
 resource_name = "killed"
 length = 1.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -88,6 +88,9 @@ script = ExtResource("6_5uqsk")
 
 [node name="combat_state" type="Node2D" parent="StateMachineScene"]
 script = ExtResource("7_nv40h")
+
+[node name="dead_state" type="Node2D" parent="StateMachineScene"]
+script = ExtResource("9_qn58n")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
